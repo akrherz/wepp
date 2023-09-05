@@ -1,4 +1,4 @@
-      subroutine chnero(ichplt,sdate,nptsc,toplen)
+      subroutine chnero(ichplt,sdate,nptsc,toplen,year)
 c
 c     + + + PURPOSE + + +
 c
@@ -30,7 +30,7 @@ c
 c     + + + ARGUMENT DECLARATIONS + + +
 c
       real toplen
-      integer ichplt, sdate, nptsc
+      integer ichplt, sdate, nptsc, year
 c
 c     + + + ARGUMENT DEFINITIONS + + +
 c

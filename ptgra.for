@@ -129,7 +129,7 @@ c
 c
 c     + + + LOCAL VARIABLES + + +
       integer intcrp, idecom, nowres, iadflg
-      real silamt,vdmact,pyld
+      real silamt,vdmact,pyld,vdmttmp
 CASnew
       character*50 ystr
       real newhgt,laic,gddc
@@ -500,7 +500,7 @@ c
              endif
 c
               else
-                  plyd = 0.0
+                  pyld = 0.0
               end if
 c
 c             NEW CODE to put cut material on soil surface as residue

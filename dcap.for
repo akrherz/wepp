@@ -22,6 +22,10 @@ c
       include 'pmxelm.inc'
       include 'pmxprt.inc'
       include 'pmxpln.inc'
+c add new parms (symbols) _byAnu_20200130    
+      include 'pmxtls.inc'
+      include 'pmxtil.inc'
+c      
 c
 c     + + + ARGUMENT DECLARATIONS + + +
 c
@@ -62,6 +66,9 @@ c
       include 'cchcon.inc'
       include 'cchprt.inc'
       include 'cchvar.inc'
+c add new parms (symbols) _byAnu_20200130   
+      include 'cupdate.inc'
+      include 'cchkr.inc'
 c
 c     + + + LOCAL VARIABLES + + +
 c
@@ -163,7 +170,15 @@ c
       difsh = effsh - crsh
       if (difsh.le.0.0) go to 10
 c
-      di = excess * chnk(ichan) * (effsh-crsh)
+CAS
+      if (ch_run .eq. 0) then
+          di = excess * chnk(ichan) * (effsh-crsh)
+c          write(69,*) sdate, year, chnk(ichan),di
+      else
+          di = excess * dailykr(ichan) * (effsh-crsh)
+c         write(69,*) sdate, year, dailykr(ichan), chnk(ichan),di
+      endif
+CAS
 c
       timpot = depmid * wtdsoi / di
       if (timpot.lt.timsh) go to 60
@@ -215,8 +230,17 @@ c
         go to 40
       end if
 c
+CAS
+      if (ch_run .eq. 0) then
       dwdti = excess * 2.0 * chnk(ichan) * (difsh) / wtdsoi
 c     dwdti = excess * 2.0 * chnk(ichan) * (difsh**1.05) / wtdsoi
+c          write(69,*) sdate, year, chnk(ichan), dwdti
+      else
+          dwdti = excess * 2.0 * dailykr(ichan) * (difsh) / wtdsoi
+c         write(89,*) sdate, year, chnk(ichan), dailykr(ichan)
+      endif
+CAS      
+
 c
       ad = (ab**0.375) * wtdh2o * sf / crsh
 

@@ -165,7 +165,7 @@ c           call growop(dm,month,ityp,sumgd,alai,imngmt)
 c
 c           call growop(imngmt,xmonth(ida),ityp,sumgd,alai,dm)
             call growop(imngmt,xmonth(ida),ityp,
-     1          extnct(itype(nowcrp,iplane)),sumgd,alai,dm)
+     1          extnct(itype(nowcrp,iplane)),sumgd,alai,dm,nowcrp)
             if ((ida.lt.jdharv(nowcrp,iplane)).and.(sumgd.le.
      1          gddmax(ityp)*dlai(ityp))) go to 10
 c
@@ -228,7 +228,7 @@ c           call growop(dm,month,ityp,sumgd,alai,imngmt)
 c
 c           call growop(imngmt,xmonth(ida),ityp,sumgd,alai,dm)
             call growop(imngmt,xmonth(ida),ityp,
-     1          extnct(itype(nowcrp,iplane)),sumgd,alai,dm)
+     1          extnct(itype(nowcrp,iplane)),sumgd,alai,dm,nowcrp)
             if ((ida.lt.365).and.(sumgd.le.gddmax(ityp)*dlai(ityp)))
      1          go to 20
 c
@@ -245,7 +245,7 @@ c             call growop(dm,month,ityp,sumgd,alai,imngmt)
 c
 c             call growop(imngmt,xmonth(ida),ityp,sumgd,alai,dm)
               call growop(imngmt,xmonth(ida),ityp,
-     1            extnct(itype(nowcrp,iplane)),sumgd,alai,dm)
+     1            extnct(itype(nowcrp,iplane)),sumgd,alai,dm,nowcrp)
               if ((ida.lt.jdharv(nowcrp,iplane)).and.(sumgd.le.
      1            gddmax(ityp)*dlai(ityp))) go to 30
 c
@@ -302,7 +302,7 @@ c         call growop(dm,month,ityp,sumgd,alai,imngmt)
 c
 c         call growop(imngmt,xmonth(ida),ityp,sumgd,alai,dm)
           call growop(imngmt,xmonth(ida),ityp,
-     1        extnct(itype(nowcrp,iplane)),sumgd,alai,dm)
+     1        extnct(itype(nowcrp,iplane)),sumgd,alai,dm,nowcrp)
 c         *** END N2 LOOP ***
           if ((ida.lt.365).and.(sumgd.le.gddmax(ityp)*dlai(ityp))) go to
      1        40

@@ -1,4 +1,4 @@
-      subroutine chnrt(nptsc,sdate,ichplt,latvol)
+      subroutine chnrt(nptsc,sdate,ichplt,latvol,year)
 c
 c     + + + PURPOSE + + +
 c
@@ -22,10 +22,14 @@ c
       include 'pmxnsl.inc'
       include 'pmxpln.inc'
       include 'pmxprt.inc'
+c add new parms (symbols) _byAnu_20200130    
+      include 'pmxtls.inc'
+      include 'pmxtil.inc'
+c      
 c
 c     + + + ARGUMENT DECLARATIONS + + +
 c
-      integer nptsc, sdate, ichplt
+      integer nptsc, sdate, ichplt, year
       real latvol
 c
 c     + + + ARGUMENT DEFINITIONS + + +
@@ -55,6 +59,9 @@ c
       include 'cstore.inc'
       include 'cstruct.inc'
       include 'cstruc.inc'
+c add new parms (symbols) _byTGuo_20200123
+      include 'cparva2.inc'
+      include 'ccover.inc'
 c
 c     + + + LOCAL VARIABLES + + +
 c
@@ -190,7 +197,16 @@ c
       eata = 1.0
       tb = 2.0 * rundur(ielmt)
 c
-      crsh = chntcr(ichan) * .021
+CAS
+      if (ch_run .eq. 0) then
+          crsh = chntcr(ichan) * .021
+c          write(69,*) sdate, year, chntcr(ichan)            
+      else
+          crsh= shcrit(iplane) * tcadjf(iplane) * .021
+c          write(69,*) sdate, year, chntcr(ichan), 
+c     1  shcrit(iplane) * tcadjf(iplane)            
+      endif
+CAS
       depsid = chneds(ichan) * 3.281
       chz = chnz(ichan)
 c

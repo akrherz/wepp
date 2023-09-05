@@ -308,6 +308,7 @@ c
           write (33,2300)
           ifofe = 1
         end if
+
 c
         if (useout('final summary').eq.1) then
 c
@@ -695,10 +696,10 @@ c
 c
  2000 format (i8)
  2100 format(' EVENT OUTPUT',/,
-     1'day mo  year Precp  Runoff  IR-det Av-det Mx-det  Point',
-     1'  Av-dep Max-dep  Point Sed.Del    ER',/,
-     1'--- --  ----  (mm)    (mm)  kg/m^2 kg/m^2 kg/m^2    (m)',
-     1'  kg/m^2  kg/m^2    (m)  (kg/m)  ----')
+     1'  day   mo  year Precp  Runoff  IR-det Av-det Mx-det  Point',
+     1'  Av-dep Max-dep  Point Sed.Del    ER  Det-Len Dep-Len',/,
+     1'  ---   --  ----  (mm)    (mm)  kg/m^2 kg/m^2 kg/m^2    (m)',
+     1'  kg/m^2  kg/m^2    (m)  (kg/m)  ----    (m)    (m)')
  2300 format(
      1' OFE DD MM YYYY  Precip   Runoff   EffInt PeakRO  EffDur Enrich',
      1'    Keff   Sm  LeafArea  CanHgt  Cancov IntCov  RilCov  LivBio',
@@ -765,5 +766,5 @@ c
      1    'Day          Precip.    Runoff      Peak       Sediment',/,
      1    '   Month     Depth      Volume      Runoff     Yield',/,
      1    '       Year  (mm)       (m^3)       (m^3/s)    (kg)',/,
-     1    '-------------------------------------------------------',/)
+     1    '-------------------------------------------------------',/)   
       end

@@ -1,4 +1,4 @@
-      subroutine growop(imngmt,month,ityp,extinc,sumgd,alai,dm)
+      subroutine growop(imngmt,month,ityp,extinc,sumgd,alai,dm,nowcrp)
 c
 c     + + + PURPOSE + + +
 c     Computes optimum biomass growth (dm) for a given day.
@@ -29,7 +29,7 @@ c     + + + PARAMETERS + + +
 c
 c     + + + ARGUMENT DECLARATIONS + + +
       real sumgd, alai, dm, extinc
-      integer imngmt, month, ityp
+      integer imngmt, month, ityp, nowcrp
 c
 c     + + + ARGUMENT DEFINITIONS + + +
 c     sumgd  - gdd accumulated thus far in the growing season

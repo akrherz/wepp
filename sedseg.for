@@ -152,6 +152,8 @@ c
       maxdet = 0.0
       ptdep = 0.0
       ptdet = 0.0
+      lossdis = 0.0
+      deposdis = 0.0
       tdep(ihill) = 0.0
       tdet(ihill) = 0.0
 c
@@ -433,6 +435,7 @@ c                   abbreviated english units
             avedet = filoss
             maxdet = totmax
             ptdet = pdtmx
+            lossdis = sum2
           end if
           if (noout.le.1) then
                 if(outopt.eq.1.and.units.eq.1)then
@@ -444,6 +447,7 @@ c                abbreviated english units
                 end if
           end if
 c
+
           do 60 kk = 1, jadet
             if (ioutss.ne.2) then
               if (noout.le.1) then
@@ -459,8 +463,9 @@ c                metric units
      1               dtavls(kk),detstd(kk),detmax(kk), pdtmax(kk),
      1               detmin(kk), pdtmin(kk)
                 end if
+              
               end if
-            end if
+             end if
 c
 c         endif
 c
@@ -539,6 +544,7 @@ c                abbreviated english units
             avedep = fidep
             maxdep = totmax
             ptdep = pdpmx
+            deposdis = sum2
           end if
           if (noout.le.1) then
             if(outopt.eq.1.and.units.eq.1)then
@@ -566,6 +572,7 @@ c
      1              depstd(kk), depmax(kk), pdpmax(kk), depmin(kk),
      1              pdpmin(kk)
                 end if
+              
               end if
             end if
 c         endif

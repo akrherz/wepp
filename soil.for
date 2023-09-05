@@ -184,6 +184,8 @@ c
       include 'cwint.inc'
 c       read: frdp(mxplan), thdp(mxplan)
 c     modify: frozen(mxnsl,mxplan),tens(mxplan)
+CAS     include dailykr relevant paramter file_byAnu_20200130
+      include 'cchkr.inc'      
 CAS Added by A. Srivastava 3/21/2016
       include 'cinpop.inc'
       include 'ccntour.inc'
@@ -1177,9 +1179,18 @@ c       ------ wheel compaction
         ckrawc = 1.0
 c
 c       ------ Total Kr adjustment factor
+c     ckrbgb - adjustment to rill erodibility for burried residue mass
+c     ckraft - adjustment to rill erodibility for freeze/thaw
+c     ckrawc - adjustment to rill erodibility for wheel compaction
+c     ckradr - adjustment to rill erodibility for dead root
+c     ckralr - adjustment to rill erodibility for live root        
         kradjf(iplane) = ckrbgb * ckrasc * ckraft * ckrawc *
      1  ckradr * ckralr
         if (kradjf(iplane).lt.0.03) kradjf(iplane)=0.03
+CAS     redefine and write dailykr_byAnu_20200130  
+          dailykr(iplane) = kr(iplane)*kradjf(iplane)
+c          write(99,2000) sdate, year, ckrbgb, ckrasc, ckraft, ckrawc,
+c     1  ckradr, ckralr, kr(iplane), kradjf(iplane), dailykr(iplane)
 c
 c       ------ Total critical shear stress adjustment factor
         tcadjf(iplane) = tcaft * ctcasc * ctcarr

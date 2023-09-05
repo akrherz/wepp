@@ -356,6 +356,24 @@ c
         write(65,3001)
         write(65,3002)
       endif
+CAS
+c      open(69,file='Da_Yr_DeTau_MoTau.txt',action='write')
+c      close(69,status='delete')
+c      open(69,file='Da_Yr_DeTau_MoTau.txt',status='new',action='write')
+      
+c      open(89,file='Da_Yr_DeKr_MoKr.txt',action='write')
+c      close(89,status='delete')
+c      open(89,file='Da_Yr_DeKr_MoKr.txt',status='new',action='write')
+      
+      ch_run = 0
+      open(unit=68,file='wepp_ch.txt',status='old',err=405)
+      ch_run = 1
+      write(6,4002)
+      close(68)
+      goto 406
+ 405  ch_run = 0     
+ 406  continue
+CAS
 c
 c     open input files
 c
@@ -1024,7 +1042,7 @@ c
 c     8-8-2007 statement commented out because it prevents subsurface and
 c     runoff events from existing on the same day
 c                  if ((solwpv.eq.2006).or.(chkflg.ne.2)) then
-                    call chnero(ichplt,sdate,nptsc,toplen)
+                    call chnero(ichplt,sdate,nptsc,toplen,year)
 c                  end if
 c Added by L. Wang, 9/11/2009.
                   endif
@@ -1358,6 +1376,10 @@ c End adding.
       if (luntc.gt.0) then
         close(65)
       endif
+CAS
+c      close(69)
+c      close(89)      
+CAS
 c
       return
 c
@@ -1394,13 +1416,16 @@ c
  2400 format (a)
  2500 format (a60,/,a60,/,a60)
  2600 format ('*** WARNING *** Assuming 1 year simulation')
-2700	format(1x, 3(i5,2x), 3x, f7.0, 5x, '0.00')
-2701	format(1x, 3(i5,2x), 5x, '0.00', 6x, '0.00')
-2800  format (1x,i4,2x,'C',i4,2x,i3,2x,i4,1x,4(f7.2,2x))
-2900  format (1x,i4,2x,'I',i4,2x,i3,2x,i4,1x,4(f7.2,2x))
-3000  format ('Element Chan   Day Year  Runoff   Time of  Storm',
+ 2700	format(1x, 3(i5,2x), 3x, f7.0, 5x, '0.00')
+ 2701	format(1x, 3(i5,2x), 5x, '0.00', 6x, '0.00')
+ 2800 format (1x,i4,2x,'C',i4,2x,i3,2x,i4,1x,4(f7.2,2x))
+ 2900 format (1x,i4,2x,'I',i4,2x,i3,2x,i4,1x,4(f7.2,2x))
+ 3000 format ('Element Chan   Day Year  Runoff   Time of  Storm',
      1         '   Storm')
-3001  format ('                          (m^3)   Conc(hr)  Dur(hr)',
+ 3001 format ('                          (m^3)   Conc(hr)  Dur(hr)',
      1         '  Peak(hr)')
-3002  format( 66('-'))
+ 3002 format( 66('-'))
+CAS
+ 4002 format (//'->WEPP modified channel erosion'//)
+CAS      
       end

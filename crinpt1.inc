@@ -21,7 +21,7 @@ c     + + + VARIABLE DECLARATIONS + + +
       integer           gday,gend,ssday,send,jgraz,it,ianflg,woody
       real              animal,bodywt,suppmt,digmin,digmax,access,
      1                  area,yield,pyield,
-     1                  perremo,perremo3
+     1                  perremo,perremo3,perremo5
 
 c     + + + VARIABLE DEFINITIONS + + +
 

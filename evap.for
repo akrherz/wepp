@@ -78,6 +78,7 @@ c     + + + KEYWORDS + + +
 c
 c     + + + ARGUMENT DECLARATIONS + + +
       real elevm
+      integer nowcrp
 c
 c     + + + ARGUMENT DEFINITIONS + + +
 c     elevm - elevation of the climate station in meters

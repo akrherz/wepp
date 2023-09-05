@@ -181,7 +181,13 @@ c
         else
           rroinr=rrinit(iplane)
         end if
-        rrrinr = rrc(iplane) / rroinr
+        
+        if (rroinr.gt.0.0) then
+           rrrinr = rrc(iplane) / rroinr
+        else
+           rrrinr = 0.0
+        end if
+        
         if (rrrinr.gt.1.0) rrrinr = 1.0
         inrfo = exp(3.024-5.042*exp(-161.*rroinr))
 c

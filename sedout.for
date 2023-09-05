@@ -428,7 +428,7 @@ c
      1      write (30,1100) day, mon, year - ibyear + 1, prcp * 1000.0,
      1      runt,
      1      avirdt, avedet, maxdet, ptdet, avedep, maxdep, ptdep,
-     1      avsole, enrato(nplane)
+     1      avsole, enrato(nplane), lossdis, deposdis
      
           do 50 iplane = 1, nplane
             watcon = 0.0
@@ -481,7 +481,7 @@ c     1    f5.1,1x,f6.2,1x,f5.2,3(1x,f5.1),6(1x,f5.2))
  1000 format (3(1x,i2),1x,i4,1x,f8.3,1x,f8.3,3(1x,f7.3),f6.3,1x,f7.3,1x,
      1    f7.3,1x,f7.3,1x,f6.3,4(1x,f8.3),5(1x,f6.3),1x,f8.3)
  1100 format (2(1x,i4),1x,i5,1x,f5.1,1x,f7.1,1x,f7.3,2(1x,f6.2),1x,f6.1,
-     1    2(1x,f7.2),1x,f6.1,1x,f7.1,1x,f5.2)
+     1    2(1x,f7.2),1x,f6.1,1x,f7.1,1x,f5.2,2(1x,f7.3))
  1200 format (3(f7.1,1x,f9.1,1x,i2,5x))
  1250 format (3(f7.2,1x,f9.3,1x,i2,5x))
  1300 format (///2x,'C.  SOIL LOSS/DEPOSITION ALONG SLOPE PROFILE',//,10

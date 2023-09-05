@@ -600,7 +600,11 @@ CAS       Reading released canopy cover percent
       endif
 CAS End
 
-25         partcf(i) = cuthgt(i) / hmax(i)
+      if  (hmax(i).gt.0.0) then
+         partcf(i) = cuthgt(i) / hmax(i)
+      else
+          partcf(i) = 0
+      endif
 c
         else if (iplant(i).eq.2) then
 c

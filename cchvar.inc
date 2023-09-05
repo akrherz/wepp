@@ -6,12 +6,13 @@ c     + + + INSERT DESCRIPTION HERE  + + +
 
       common/chvar/  x(mxcseg),slope(mxcseg),chnlef,chnn(mxplan),
      1               chnks(mxplan),chntcr(mxplan),chnedm(mxplan),
-     1               chneds(mxplan),chnk(mxplan)
+     1               chneds(mxplan),chnk(mxplan),ch_run
 
 c     + + + VARIABLE DECLARATIONS + + +
 
       real           x,slope,chnlef,chnn,chnks,chntcr,
      1               chnedm,chneds,chnk
+      integer        ch_run
 
 c     + + + VARIABLE DEFINITIONS + + +
 
@@ -24,6 +25,7 @@ c     chntcr(mxplan) :
 c     chnedm(mxplan) :
 c     chneds(mxplan) :
 c     chnk(mxplan)   :
+c     ch_run         : flag to indicate to use temporal channel erodibilty
 
 c     end include file cchvar.inc
 

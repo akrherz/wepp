@@ -9,13 +9,15 @@ c     + + + INSERT DESCRIPTION HERE  + + +
      1                  detm(mxhill),dety(mxhill),dett(mxhill),
      1                  depm(mxhill),depy(mxhill),dept(mxhill),
      1                  hrom(mxhill),hroy(mxhill),hrot(mxhill),
-     1                  hsedm(mxhill),hsedy(mxhill),hsedt(mxhill)
+     1                  hsedm(mxhill),hsedy(mxhill),hsedt(mxhill),
+     1                  lossdis,deposdis
+    
 
 c     + + + VARIABLE DECLARATIONS + + +
 
       real              avedet,maxdet,ptdet,avedep,maxdep,ptdep,irdgdx,
      1                  tdep,tdet,detm,dety,dett,depm,depy,dept,hrom,
-     1                  hroy,hrot,hsedm,hsedy,hsedt
+     1                  hroy,hrot,hsedm,hsedy,hsedt,lossdis,deposdis
 
 c     + + + VARIABLE DEFINITIONS + + +
 
@@ -46,6 +48,8 @@ c     hrot(mxhill)   : total hillslope runoff (m^3)
 c     hsedm(mxhill)  : monthly hillslope sediment loss (kg)
 c     hsedy(mxhill)  : yearly hillslope sediment loss (kg)
 c     hsedt(mxhill)  : total hillslope sediment loss (kg)
+c     detdis         : length of all detachment regions (m)
+c     depdis         : length of all deposition regions (m)
 
 c     end include file cseddet.inc
 

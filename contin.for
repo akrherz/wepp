@@ -1188,6 +1188,8 @@ c
                   avedep = 0.
                   maxdep = 0.
                   ptdep = 0.
+                  lossdis = 0.
+                  deposdis = 0.
 c
                   go to 200
 c
@@ -1299,6 +1301,8 @@ c
                 avedep = 0.
                 maxdep = 0.
                 ptdep = 0.
+                lossdis = 0.
+                deposdis = 0.
 c
               end if
 c

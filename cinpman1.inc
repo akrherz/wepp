@@ -23,7 +23,7 @@ c     + + + VARIABLE DECLARATIONS + + +
       real    tilla1,r1,fbrno1,fbrna1,frcu1,bodyw1,are1,diges1,
      1        anima1,tilla2,
      1        perremo1,perremo2,
-     1        cutht1
+     1        cutht1,perremo4
       integer iscen,tilse1,conse1,irrset,imngm1,resmg1,
      1        jdpl1,jdhar1,jdher1,jdbur1,jdslg1,jdcu1,jdsto1,
      1        mgtop1,ncu1,gda1,gen1,jfdat1,ihdat1,
