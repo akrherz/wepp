@@ -903,9 +903,13 @@ c         will contain these values.    dcf  5/3/94
 c
           if (datver.ge.94.303) then
             call eatcom(12)
+            if (datver.ge.2016.3) then
 CAS Added usinrco1 (understory interrill) and usrilco1 (understory rill) in the initial
 CAS conditions scenarios for understory cover.
-            read (12,*) rtm1(i), smrm1(i), usinrco1(i), usrilco1(i)
+              read (12,*) rtm1(i), smrm1(i), usinrco1(i), usrilco1(i)
+            else
+              read (12,*) rtm1(i), smrm1(i)
+            endif
           else
             rtm1(i) = 0.0
             smrm1(i) = 0.0

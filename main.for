@@ -261,7 +261,7 @@ c
 cd	Added by S. Dun, Nov 17, 2006
 c	for Erin Brooks
             ui_areaht = 0.
-            do 95 i = 1, 30
+            do 95 i = 1, 100
 	        do 95 j = 1,366	   
 	          ui_epht(i,j) = 0.
 	          ui_esht(i,j) = 0.

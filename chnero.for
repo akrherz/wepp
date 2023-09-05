@@ -133,7 +133,7 @@ c     if (flgout(ichan).ge.5) call chnvar(ichan,chnlen(ichan))
 c
 c     compute channel hydraulics and erosion
 c
-      call chnrt(nptsc,sdate,ichplt,latvol)
+      call chnrt(nptsc,sdate,ichplt,latvol,year)
 c
 c     write event output
 c

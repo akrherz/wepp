@@ -4,8 +4,8 @@ c     begin include file wathour.inc
 c     + + + COMMON BLOCK DESCRIPTION + + +
 c     + + + INSERT DESCRIPTION HERE  + + +
 
-      common /watht/  ui_epht(30,366), ui_esht(30,366), 
-     1 ui_sepht(30,366), ui_areaht, ui_bdrkth(mxplan),
+      common /watht/  ui_epht(100,366), ui_esht(100,366), 
+     1 ui_sepht(100,366), ui_areaht, ui_bdrkth(mxplan),
      1 ui_ssh1(mxnsl,mxplan),ui_ssh(mxnsl+1,mxplan)
 
 c     + + + VARIABLE DECLARATIONS + + +
