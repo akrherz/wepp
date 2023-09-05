@@ -3,15 +3,15 @@ This is the WEPP model used by NRCS and the WEPP Windows interface. **The last r
 
 When building the model for use in watershed application copy the files from the subdirectory **watershed-large-arrays** overwriting the default include files. These files define larger array sizes internal to WEPP.
 
-#Building under Linux
+## Building under Linux
 Type 'make' in the directory with the source code. The default is to use the Intel compiler (ifort). A 64 bit version can be built using the 'makefile64' file with the 'make' command.
 
-#Building under Windows
+## Building under Windows
 
 
-#Other Compilers
+## Other Compilers
 The gfortran comiler can be used. Uncomment the flags ((FLAGS), compiler(FC) and linker(LINKER) lines in the makefile to use gfortran compiler instead of the Intel compiler:
-`
+```
 FFLAGS = $(FFLAGS_GNU)
 FC = $(FC_GNU)
 LINKER = $(LINK_GNU)
@@ -20,4 +20,4 @@ LINKER = $(LINK_GNU)
 #FC = $(FC_IF)
 #LINKER = $(LINK_IF)
 
-`
+```
