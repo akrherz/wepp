@@ -718,7 +718,7 @@ c
 c         flag for cultivator type if less than 5
 c         flag for residue management if greater than 9
 c
-          call readin(12,code1,1,17,'code        ')
+          call readin(12,code1,1,19,'code        ')
           resma1(i)=code1
           if (code1.le.4)then
 c
@@ -811,6 +811,19 @@ c                         17 = HERBICIDE
 c
               call eatcom(12)
 c
+            end if
+            if (resma1(i).eq.18.or.resma1(i).eq.19)then !CAS 2/22/2022
+c             RESIDUE REMOVAL additional data line for new files
+c             resma1(i) = residue management flag
+c                         18 = flat and standing residue removal without surface disturbance
+c                         19 = flat and standing residue removal with disturbance
+c             frfmov1(i)=fraction of residue removed (0-1)
+c             frsmov1(i)=fraction of residue removed (0-1)
+c
+              call eatcom(12)
+c
+              read (12,*) frfmov1(i)
+              read (12,*) frsmov1(i)
             end if
       endif
 CASnew ends

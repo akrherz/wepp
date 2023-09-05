@@ -15,7 +15,8 @@ c     + + + INSERT DESCRIPTION HERE  + + +
      1                  iroot(mxres,mxplan),rngout,iplant(ntype),
      1                  jdsene(mxcrop,mxplan),rngplt,rnganm,
      1                  jdancut(mxcrop,mxplan),
-     1                  ancutht(mxcrop,mxplan)
+     1                  ancutht(mxcrop,mxplan),
+     1                  frfmove(mxtill,mxplan),frsmove(mxtill,mxplan)
 
 c     + + + VARIABLE DECLARATIONS + + +
 
@@ -24,7 +25,7 @@ c     + + + VARIABLE DECLARATIONS + + +
      1                  rnganm, rngplt,jdmove,iresad,
      1                  jdancut
       real              rw,yld,btemp,frmove,resad,
-     1                  ancutht
+     1                  ancutht,frfmove,frsmove
 
 c     + + + VARIABLE DEFINITIONS + + +
 

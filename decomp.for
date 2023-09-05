@@ -328,7 +328,7 @@ c     + + + LOCAL VARIABLES + + +
 CAS
       real buried
       integer tillflg
-      real rmogt2, rmogt3, cf2, cf3
+      real rmogt2, rmogt3, cf2, cf3, tmpvr6, tmpvr7
       integer numresrtm
 CAS
       integer i1, i2, numres, i, nowres
@@ -936,7 +936,7 @@ CAS First - fragile crops, second - non-fragile crops A. Srivastava 3/13/2017
 !!          endif
 CAS End adding.
 
-          elseif (resman(i1,i2).le.13) then
+          elseif (resman(i1,i2).le.13.or.resman(i1,i2).ge.18) then
 c           *********************************************************************
 c           * NEW RESIDUE CODE ALLOWING MULTIPLE RESIDUE ADDITIONS AND REMOVALS *
 c           *********************************************************************
@@ -1051,6 +1051,26 @@ c           -------- update ridge & rill residue masses
 c               -------- update residue mass on the ground
 c               (WEPP Equation 8.4.15)
   100         continue
+              else if(manver.ge.2016.3 .and. resman(i1,i2).ge.18)then !CAS 2/22/2022
+c           amount of flat residue removed if any
+              if(resman(i1,i2).eq.18)
+     1            write(6,1050)frsmove(i1,i2)*100,iplane,mdate(i1,i2)
+              if(resman(i1,i2).eq.19)
+     1            write(6,1100)frsmove(i1,i2)*100,iplane,mdate(i1,i2)
+
+c             ------ fraction of flat residue mass remaining
+              tmpvr6 = 1.0 - frfmove(i1,i2)
+              do 105 nowres = 1, numres
+c           -------- update ridge & rill residue masses
+                rmogt(nowres,iplane) = rmogt(nowres,iplane) * tmpvr6
+                rilrm(nowres,iplane) = rilrm(nowres,iplane) * tmpvr6
+                rigrm(nowres,iplane) = rigrm(nowres,iplane) * tmpvr6
+c               -------- update residue mass on the ground
+c               (WEPP Equation 8.4.15)
+  105         continue
+c             ------ fraction of standing residue mass remaining
+              tmpvr7 = 1.0 - frsmove(i1,i2)
+              rmagt(iplane) = rmagt(iplane) * tmpvr7
             end if
 c
           rmagy = rmagt(iplane)
@@ -1066,6 +1086,11 @@ c
           if(resman(i1,i2).eq.12)
      1        rmagt(iplane) = rmagt(iplane) *
      1        exp(-8.535*mfo(i1,i2,nowcrp)**2)
+CAS 2/22/2022
+          if(manver.ge.2016.3 .and. resman(i1,i2).eq.19)
+     1        rmagt(iplane) = rmagt(iplane) *
+     1        exp(-8.535*mfo(i1,i2,nowcrp)**2)
+CAS
 c
 c         Calculate change in residue mass due to tillage for
 c         ridged or non-ridged systems

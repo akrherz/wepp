@@ -282,6 +282,10 @@ CASnew NRCS version
                   fbrnag(j,i) = fbrna1(op(j,i))
                   fbrnog(j,i) = fbrno1(op(j,i))
               endif
+              if(resman(j,i).eq.18.or.resman(j,i).eq.19) then!CAS 2/22/2022
+                  frfmove(j,i)=frfmov1(op(j,i))
+                  frsmove(j,i)=frsmov1(op(j,i))
+              endif
       endif
 CASnew
 c
@@ -291,13 +295,17 @@ c
 c                 tillage intensity for non-fragile residue on interrill areas
 c
 c                   no surface disturbance
-                  if(resman(j,i).eq.10.or.resman(j,i).eq.11)then
+                  if(resman(j,i).eq.10.or.
+     1                resman(j,i).eq.11.or.
+     1                resman(j,i).eq.18) then
                     mfo(j,i,k)=0.0
                     rmfo(j,i,k) = 0.0
 c
 c                   surface disturbance
 c
-                  else if(resman(j,i).le.4.or.resman(j,i).ge.12)then
+                  else if(resman(j,i).le.4.or.
+     1                (resman(j,i).ge.12.and.resman(j,i).le.17).or.
+     1                resman(j,i).eq.19)then
                     mfo(j,i,k) = mfo11(op(j,i))
                     rmfo(j,i,k) = rmfo1(op(j,i))
                   end if
@@ -306,11 +314,15 @@ c
 c                 tillage intensity for fragile residue on interrill areas
 c
 c                 no surface disturbance
-                  if(resman(j,i).eq.10.or.resman(j,i).eq.11)then
+                  if(resman(j,i).eq.10.or.
+     1                resman(j,i).eq.11.or.
+     1                resman(j,i).eq.18) then
                     mfo(j,i,k)=0.0
                     rmfo(j,i,k) = 0.0
 c                 surface disturbance
-                  else if(resman(j,i).le.4.or.resman(j,i).ge.12)then
+                  else if(resman(j,i).le.4.or.
+     1                (resman(j,i).ge.12.and.resman(j,i).le.17).or.
+     1                resman(j,i).eq.19)then
                     mfo(j,i,k) = mfo21(op(j,i))
                     rmfo(j,i,k) = rmfo2(op(j,i))
                   end if

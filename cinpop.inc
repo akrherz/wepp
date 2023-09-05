@@ -9,14 +9,16 @@ c     + + + INSERT DESCRIPTION HERE  + + +
      1                 iop(ntype*2),code1,numof1,cltps1,
      1                 surdi1(ntype*2),iresa1(ntype*2),resad1(ntype*2),
      1                 frmov1(ntype*2),resma1(ntype*2),jdmov1(ntype*2),
-     1                 resurf1(ntype*2),resurnf1(ntype*2)
+     1                 resurf1(ntype*2),resurnf1(ntype*2),
+     1                 frfmov1(ntype*2),frsmov1(ntype*2)
 
 
 c     + + + VARIABLE DECLARATIONS + + +
 
       real             rro1,rho1,rint1,tdmea1,mfo11,mfo21,surdi1,resad1,
      1                 frmov1,
-     1                 resurf1,resurnf1
+     1                 resurf1,resurnf1,
+     1                 frfmov1,frsmov1
       integer          iop,code1,numof1,cltps1,iresa1,resma1,jdmov1
 
 c     + + + VARIABLE DEFINITIONS + + +
