@@ -545,8 +545,8 @@ c
 CAS Commented by A. Srivastava 11/14/2019 Removed hia component to compute cancov.
 CAS Problem: For high hi annual crops (eg hi = 0.90), cancov was declining before
 CAS crop reached maturity. Now we use eq similar to those used for perennial crops.   
-     !!           cancov(iplane) = 1.0 - exp(-bb(itype(nowcrp,iplane))*
-     !!1              vdmt(iplane)*(1.-hia(iplane)))
+c    !!           cancov(iplane) = 1.0 - exp(-bb(itype(nowcrp,iplane))*
+c    !!1              vdmt(iplane)*(1.-hia(iplane)))
                 cancov(iplane) = 1.0 - exp(-bb(itype(nowcrp,iplane))*
      1              vdmt(iplane))
             else
