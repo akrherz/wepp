@@ -20,14 +20,19 @@ LINK_GNU     = gfortran
 LINK_2    = g++
 PROGRAM   = wepp
 
+ifeq ($(FC),gfortran)
+  FFLAGS = $(FFLAGS_GNU)
+  FC = $(FC_GNU)
+  LINKER = $(LINK_GNU)
+else
+  FFLAGS = $(FFLAGS_IFORT)
+  FC = $(FC_IF)
+  LINKER = $(LINK_IF)
+endif
+
 #FFLAGS = $(FFLAGS_G95)
 #FC = $(FC_G95)
 #LINKER = $(LINK_G95)
-
-FFLAGS = $(FFLAGS_IFORT)
-FC = $(FC_IF)
-LINKER = $(LINK_IF)
-
 
 DEST      = .
 #LDFLAGS   = -static /usr/lib/gcc-lib/i686-pc-linux-gnu/4.1.1/libgcc.a /usr/lib/gcc-lib/i686-pc-linux-gnu/4.1.1/libgcc_eh.a /usr/lib/gcc-lib/i686-pc-linux-gnu/4.1.1/libf95.a 
