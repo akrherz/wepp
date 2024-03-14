@@ -83,6 +83,25 @@ c
       save
       real ratiom, crct, frclyt, frcly1, f1f2f5
       integer k, i, jflag
+	  
+c     CODE ADDED TO BYPASS COMPUTATIONS AND LET EXPERT
+c     USER UTILIZE OWN SET OF PARTICLE CHARACTERISTICS
+c     DCF - March 14, 2024
+      if(usr_partsize.eq.1) then
+        read(9,*) npart
+        do 5 i = 1,npart
+          read(9,*, ERR=6, END=6)frac(i,ielmt),
+     1               dia(i,ielmt),spg(i),
+     1               frcly(i,ielmt),frslt(i,ielmt),
+     1               frsnd(i,ielmt),frorg(i,ielmt)
+	      goto 5
+	6     write (6,*)
+     1      ' partsize.dat file, error reading particle size data.'
+		  stop
+    5   continue
+	    
+      else
+
 c
 c     all the arrays within this subroutine have been redimensionalized
 c     from mxplan to mxelem.  this is required for the channel erosion
@@ -326,6 +345,11 @@ c
           go to 20
         end if
       end if
+	  
+c     End of new IF-ENDIF for code to allow user to
+c     read in their own particle characteristics.
+      endif
+
 c
 c     convert diameter from millimeters to meters
 c

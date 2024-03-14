@@ -49,6 +49,8 @@ c
 c
       include 'cwshed.inc'
 c     modify: pasfil(mxhill),watfil
+
+      include 'cpart1.inc'
 c
 c     + + + LOCAL VARIABLES + + +
 c
@@ -97,6 +99,12 @@ c
 c
 c     + + + END SPECIFICATIONS + + +
 c
+	  usr_partsize = 0
+      open (unit=9,file='partsize.dat',status='old',err=301)
+	  usr_partsize = 1
+	  goto 302
+ 301  usr_partsize = 0
+ 302  continue
       iniflg = 1
       
 c     check if we should use the subsurface flow from Erin (from bottom)
@@ -404,6 +412,12 @@ c
 CAS
       close(66)
 CAS
+c
+c     dcf CLOSE - special unit 9 - to read in particle size
+c     data - for Rob Loch.
+      if (usr_partsize.eq.1) then
+         close(9)
+	  end if
 c
  1000 format (a1)
  1100 format (' Do you wish to drop out of the model upon invalid',
