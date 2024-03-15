@@ -26,6 +26,8 @@ c
       include 'pmxpln.inc'
       include 'pntype.inc'
       include 'pmxnsl.inc'
+      include 'pmxelm.inc'
+      include 'pmxprt.inc'
 c
 c     + + + ARGUMENT DECLARATIONS + + +
 c
