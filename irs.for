@@ -742,7 +742,14 @@ c           End of new code inserted by Jeff Stone, 2/98, dcf 3/2/98
 c
             effdrn(l) = effdrn(kplane)
             if (effdrn(l).gt.0) then
-               peakro(l) = runoff(l) / effdrn(l)
+CAS commented by A. Srivastava
+CAS                peakro(l) = runoff(l) / effdrn(l)
+               if(contrs(nowcrp(l),l).ne.0) then
+                  peakro(l) = runoff(l)/effdrn(l)
+               else
+                  peakro(l) = (runoff(l)*efflen(l)/totlen(l))/effdrn(l)
+               endif
+CAS end
             else
                peakro(l) = 0
             endif
