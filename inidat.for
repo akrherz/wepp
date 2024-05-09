@@ -328,8 +328,8 @@ c     + + + END SPECIFICATIONS + + +
 c
 c
       if (iniflg.eq.1) then
-        ver = 2024.073
-        vermon = ' Mar 14,  '
+        ver = 2024.129
+        vermon = ' May 9,  '
         veryr = 2024
         return
       end if
