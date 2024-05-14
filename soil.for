@@ -443,7 +443,7 @@ c
 c             ------------ reset cumulative rainfall since last tillage
               rfcum(iplane) = 0.0
 CAS For NRCS contouring
-      if (manver .ge. 2016.3) then ! NRCS contouring
+      if ((manver .ge. 2016.3).and.(contours_perm .eq. 0)) then ! NRCS contouring
               if(condysflg(iplane) .eq. 1) then 
                   contrs(nowcrp,iplane) = 1 ! switching on contours
                   write(6,*)'CONTOUR ROUTING ENABLED ON PLANE', iplane,
@@ -469,7 +469,7 @@ c
      1            daydis(iplane) + 1.0
               
 CAS
-      if (manver .ge. 2016.3) then ! NRCS contouring
+      if ((manver .ge. 2016.3).and.(contours_perm .eq. 0)) then ! NRCS contouring
               if(tildate(iplane) .eq. 0) goto 999
               if((condysflg(iplane).eq. 1).and.
      1                        (sdate.gt.tildate(iplane))) then
@@ -622,7 +622,7 @@ c             check minimum values for ridge height (RH) in ridge tillage
                 end if
               end if
 CAS Start
-      if (manver .ge. 2016.3) then ! NRCS contouring
+      if ((manver .ge. 2016.3).and.(contours_perm .eq. 0))  then ! NRCS contouring
               if (tilseq(nowcrp,iplane).gt.0) then
                 if (iridge(tilseq(nowcrp,iplane)).ne.1 .and.
      1                contrs(nowcrp,iplane).ne.0 .and.

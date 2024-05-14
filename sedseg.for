@@ -182,7 +182,7 @@ c
 CAS        if (icont.eq.1) write (jun,1900) !! Commented by A. Srivastava 12/12/2017
 CAS Added to print appropriate message for contour failure. A. Srivastava 12/12/2017
            if (icont.eq.1) then
-               if (manver .ge. 2016.3) then 
+               if ((manver .ge. 2016.3).and.(contours_perm .eq. 0)) then 
                    write (jun,1900)
                else
                    write (jun,1800)

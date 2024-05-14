@@ -1114,7 +1114,10 @@ c*******************************
 c
 c     ncnt = NUMBER OF CONTOUR SCENARIOS
 c
+
       call readin(12,ncnt,0,ntype,'ncnt        ')
+      
+      contours_perm = 0
 c
 c     LOOP NCNT TIMES
 c
@@ -1128,16 +1131,21 @@ c
 c         CROPLAND CONTOUR
 c
           call eatcom(12)
-          if(datver.gt.98.4)
-     1    read (12,*, IOSTAT=istatus) cntslp(i), rdghgt(i), rowlen(i), 
-     1                rowspc(i),cntday(i), cntend(i)
-          if (istatus.ne.0) then
-            cntday(i) = 1
-            cntend(i) = 365
-          endif  
+          if(datver.gt.98.4) then
+           read (12,*, IOSTAT=istatus) cntslp(i), rdghgt(i), rowlen(i), 
+     1                rowspc(i),cntday(i), cntend(i), contours_perm
+           if (istatus.ne.0) then
+               cntday(i) = 1
+               cntend(i) = 365
+               contours_perm = 0
+           endif  
+          endif
+          
 c
-          if(datver.le.98.4)
-     1    read (12,*) cntslp(i), rdghgt(i), rowlen(i), rowspc(i)
+          if(datver.le.98.4) then
+             read (12,*) cntslp(i), rdghgt(i), rowlen(i), rowspc(i)
+             contours_perm = 1
+          endif
 c
 c
 c         correction by dcf to prevent model bombing - do not
@@ -1170,6 +1178,14 @@ c
 c
         end if
    80 continue
+      
+      if ((ncnt.gt.0).and.(datver.ge.2016.3)) then
+          if (contours_perm.eq.1) then                  
+             write (6,*) '>>Contouring uses permanent contours' 
+          else 
+             write (6,*) '>>Contouring uses temporary (NRCS) contours' 
+          endif
+      endif
 c
 c*******************************
 c

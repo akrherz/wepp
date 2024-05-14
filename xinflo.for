@@ -232,7 +232,7 @@ c
 CAS Commented by A. Srivastava 3/21/2016
         !rspace(iplane) = rowspc(conseq(nowcrp,iplane))
 CAS Added by A. Srivastava 3/21/2016
-      if (manver .ge. 2016.3) then
+      if ((manver .ge. 2016.3).and.(contours_perm .eq. 0)) then
 ! NRCS version
         if (tildate(iplane) .ne. 0) then
             rspace(iplane) = riinit(iplane) 

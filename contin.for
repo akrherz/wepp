@@ -754,7 +754,7 @@ c
 
             do 180 iplane = 1, nplane
 CAS
-      if (manver .ge. 2016.3) then ! NRCS contouring
+      if ((manver .ge. 2016.3).and.(contours_perm .eq. 0)) then ! NRCS contouring
           condysflg(iplane) = 0 ! setting initial value to zero
       !!write(*,*)sdate,year
       endif
@@ -771,8 +771,8 @@ c
 c
                  !!contrs(nowcrp(iplane),iplane)=1 Commented by AS
 CAS
-              if (manver .ge. 2016.3) then ! NRCS contouring
-                 condysflg(iplane) = 1
+              if ((manver .ge. 2016.3).and.(contours_perm .eq. 0)) then
+                 condysflg(iplane) = 1               ! NRCS contouring
               else
                  contrs(nowcrp(iplane),iplane)=1
               endif
@@ -785,14 +785,15 @@ c
                  write(6,*)'CONTOUR ROUTING ENABLED ON PLANE', iplane,
      1           ' ON DAY ',sdate
 CAS For NRCS contouring
-                  if (manver .ge. 2016.3) then ! NRCS contouring
+                  if ((manver .ge. 2016.3).and.
+     1                 (contours_perm .eq. 0)) then ! NRCS contouring
                     contrs(nowcrp(iplane),iplane)=1 ! Switching on contours
                     cnfail(iplane) = 0 ! setting initial value to zero
                     failflg(iplane) = 0 ! setting initial value to zero
                   endif
                 endif
-              if (manver .ge. 2016.3) then ! NRCS contouring
-                !if(cnfail(iplane) .eq. 1) then
+              if ((manver .ge. 2016.3).and.(contours_perm .eq. 0)) then
+                !if(cnfail(iplane) .eq. 1) then  ! NRCS contouring
                 if(cnfail(1) .eq. 1) then
                     contrs(nowcrp(iplane),iplane)=0 !This will turn off contours if contour failed the previous day
                 else if(cnfail(iplane) .eq. 1) then
@@ -1139,7 +1140,7 @@ c
 cd	added by S. Dun, Nov 16, 2006
 c	For Erin Brooks to seek the total deep percolation from hilslope
              if (ui_run.eq.1) then
-			   if((sdate.eq.1) .and. (i.eq.1)) then
+              if((sdate.eq.1) .and. (i.eq.1)) then
                   ui_areaht = ui_areaht + fwidth(iplane)*slplen(iplane)
 	        endif
 			  ui_epht(i,sdate) = ui_epht(i,sdate)
