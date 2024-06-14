@@ -116,7 +116,7 @@ c     modify: st(mxnsl,mxplan)
 c
 c	Added by S. Dun, March 07, 2007
 c	For Erin's uniform distributed water iput model of subsurface lateral flow
-	include 'wathour.inc'
+      include 'wathour.inc'
 c	LFtstp time step variable were added in the soil moisture adjustment
 cd    End adding      
 c
