@@ -1,4 +1,4 @@
-	subroutine chrqin(vol, qin, nt0, iq)
+      subroutine chrqin(vol, qin, nt0, iq)
 c
 c     + + + PURPOSE + + +
 c     SR CHRQIN calculates channel inflow (m^3/s) or lateral inflow (m^3/s) for each time step.
@@ -24,8 +24,8 @@ c
       include 'pmxseg.inc'
       include 'pmxcsg.inc'
       include 'pmxchr.inc'
-	include 'pmxtil.inc'
-	include 'pmxtls.inc'
+      include 'pmxtil.inc'
+      include 'pmxtls.inc'
 c
 c     + + + ARGUMENT DECLARATIONS + + +
 c
@@ -44,7 +44,7 @@ c
       include 'cchvar.inc'
       include 'cchpar.inc'
       include 'cchrt.inc'
-	include 'cupdate.inc'
+      include 'cupdate.inc'
 c
 c     + + + LOCAL VARIABLES + + +
 c
