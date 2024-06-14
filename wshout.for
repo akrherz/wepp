@@ -58,11 +58,11 @@ c
 c     static local (hence the `save')
 c
       integer tint(8), bigcrp, iiyear, intmin(8), intmax(8), i, kk
-      real treal(83), ralmax(83), ralmin(83), watcon
+      real treal(96), ralmax(96), ralmin(96), watcon, watconf
       save intmin, intmax, ralmin, ralmax
 c
-      data ralmin /83 * 1e6/
-      data ralmax /83 * -1e6/
+      data ralmin /96 * 1e6/
+      data ralmax /96 * -1e6/
       data intmin /8 * 1e4/
       data intmax /8 * -1e4/
 c
@@ -86,10 +86,14 @@ c       determine total soil water content for all the
 c       Channels this date
 c
         watcon = 0.0
+		watconf = 0.0
 c
         do 10 i = 1, nsl(iplane)
           watcon = watcon + soilw(i,iplane)
+		  watconf = watconf + soilf(i,iplane)
    10   continue
+   
+  
 c
 c
 c       determine the current minimums and maximums
@@ -229,6 +233,14 @@ c
         treal(81) = fribas(iplane)
         treal(82) = frican(iplane)
         treal(83) = daydis(iplane)
+		
+        treal(84) = ofelod(iplane) * 0.67196
+        treal(85) = eres(iplane) * 1000.0 / 25.4
+        
+        treal(86) = watconf
+        do 45 kk = 1, mxnsl
+          treal(86+kk) = soilf(kk,iplane) * 1000.0 / 25.4
+   45   continue
 c
         effdrn(iplane) = 0.0
         temstr(iplane) = 1.0
@@ -243,7 +255,7 @@ c
 c
 c       determine the minimums and maximums
 c
-        do 50 i = 1, 83
+        do 50 i = 1, 96
           call mxreal(treal(i),ralmin(i),ralmax(i))
    50   continue
 c
@@ -253,7 +265,10 @@ c
 c
 c       write the daily information
 c
-        write (40,1000) tint(1), treal, (tint(i),i = 2,8)
+c        write (40,1000) tint(1), treal, (tint(i),i = 2,8)
+		
+		write (40,1000) tint(1), (treal(i),i=1,83), (tint(i),i = 2,8),
+     1         (treal(i),i=84,96)
 c
 c     WEPP has completed - append min/max values
 c
@@ -263,12 +278,18 @@ c
         write (40,*) '#       Minimum/Maximum values:'
         write (40,*) '#'
 c
-        write (40,1000) intmin(1), ralmin, (intmin(i),i = 2,8)
-        write (40,1000) intmax(1), ralmax, (intmax(i),i = 2,8)
+c        write (40,1000) intmin(1), ralmin, (intmin(i),i = 2,8)
+c        write (40,1000) intmax(1), ralmax, (intmax(i),i = 2,8)
+		
+		write (40,1000)intmin(1),(ralmin(i),i=1,83),(intmin(i),i = 2,8),
+     1        (ralmin(i),i=84,96)
+        write (40,1000)intmax(1),(ralmax(i),i=1,83),(intmax(i),i = 2,8),
+     1        (ralmax(i),i=84,96)
 c
       end if
 c
       return
 c
- 1000 format (i6,83(1x,f10.5),7(1x,i2))
+c      1000 format (i6,83(1x,f10.5),7(1x,i2))
+ 1000 format (i6,83(1x,f10.5),7(1x,i2),13(1x,f10.5))
       end
