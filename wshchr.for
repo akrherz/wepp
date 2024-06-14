@@ -1,4 +1,4 @@
-	subroutine wshchr
+      subroutine wshchr()
 c
 c     + + + PURPOSE + + +
 c     SR WSHCHR routes channel flow using either kinematic wave method
@@ -23,8 +23,8 @@ c
       include 'pmxseg.inc'
       include 'pmxcsg.inc'
       include 'pmxchr.inc'
-	include 'pmxtil.inc'
-	include 'pmxtls.inc'
+      include 'pmxtil.inc'
+      include 'pmxtls.inc'
 c
 c     + + + ARGUMENT DECLARATIONS + + +
 c
@@ -45,7 +45,7 @@ c
       include 'cchvar.inc'
       include 'cchpar.inc'
       include 'cchrt.inc'
-	include 'cupdate.inc'
+      include 'cupdate.inc'
       include 'cslpopt.inc'
 c
 c     + + + LOCAL VARIABLES + + +
