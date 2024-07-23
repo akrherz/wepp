@@ -10,13 +10,14 @@ c     + + + INSERT DESCRIPTION HERE  + + +
      1                  totfal(mxplan),cntday(mxplan),cntend(mxplan),
      1                  contrs(mxcrop,mxplan)
      1                  ,cnfail(mxplan),condysflg(mxplan)
-     1                  ,tildate(mxplan),failflg(mxplan)
+     1                  ,tildate(mxplan),failflg(mxplan),
+     1                  contours_perm
 
 c     + + + VARIABLE DECLARATIONS + + +
 
       real              cntslp,rowspc,rowlen,rdghgt,cntlen,cnslp
       integer           conseq,fail,totfal,cntday,cntend,contrs,cnfail
-      integer           condysflg,tildate,failflg
+      integer           condysflg,tildate,failflg,contours_perm
 
 c     + + + VARIABLE DEFINITIONS + + +
 c     cntday(mxplan)        : beginning day contours in effect (julian)
@@ -37,6 +38,8 @@ c     condysflg(mxplan)     : flag for NRCS version (>= v2016.3) used to identif
 c                             contouring and to switch contours on/off for tillage within contours days
 c     failflg(mxplan)       : counter used to switch off contours in a hillslope with multiple OFE's if 
 c                             contours fails in the uppermost OFE's on a hillslope.
+c     contours_perm         : flag to indicate if temporary contours (flag=0, NRCS version) or previous 
+c                             permanent contouring (flag=1) should be used
 c
 c
 c

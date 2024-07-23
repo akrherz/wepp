@@ -92,7 +92,7 @@ c
       s = avgslp(iplane)
 c
 CAS Added by A. Srivastava 3/21/2016
-      if (manver .ge. 2016.3) then
+      if ((manver .ge. 2016.3).and.(contours_perm .eq. 0)) then
 CAS   NRCS version: They suggested to replace countour ridge height 
 CAS   and contour row spacing with tillage ridge height and rill space,
 CAS   respectively.

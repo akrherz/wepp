@@ -144,7 +144,7 @@ c
           if (effdrn(iplane).gt.pkefdn) pkefdn = effdrn(iplane)
           call tfail(efflen(iplane),nowcrp)
 CAS NRCS contouring
-      if (manver .ge. 2016.3) then
+      if ((manver .ge. 2016.3).and.(contours_perm .eq. 0)) then
             if(failflg(iplane).eq.1) then
                 write(6,*)'CONTOUR ROUTING DISABLED ON PLANE', iplane,
      !           ' ON DAY ',sdate
