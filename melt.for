@@ -202,7 +202,8 @@ c
 c    NOTE - The wind generated
 c    by CLIGEN is for a 10 meter height 
 c
-        adj = 1.57 * windh**(-1/6)        
+c        adj = 1.57 * windh**(-1/6)
+        adj = 1.57 * windh**(-1.0/6.0)     
         if (adj.lt.0) adj = 0
 c
 c       Savabi correction to convert wind velocity from m/sec
