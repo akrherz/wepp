@@ -47,48 +47,72 @@ c     + + + DATA INITIALIZATIONS + + +
 c
 c
       newnam = '        '
-c
-      if (len(oldnam).le.8) then
-        newnam = oldnam(1:8)
-        return
-      end if
-c
-      filpos = 8
+    
+      filpos = 1
 c
       do 10 spos = len(oldnam), 1, -1
 c
         if (oldnam(spos:spos).eq.'.') then
           tpos = spos - 1
 c
+c       This is the base part of the name, find the beginning
+c
           do while (oldnam(tpos:tpos).ne.'/'.and.oldnam(tpos:tpos).ne.
-     1        '\\')
-            newnam(filpos:filpos) = oldnam(tpos:tpos)
-            filpos = filpos - 1
-            tpos = tpos - 1
-            if (tpos.lt.1.or.filpos.lt.1) return
+     1        '\')
+            tpos = tpos  - 1
+            if (tpos.lt.1) then
+               exit
+            end if
           end do
+
+         tpos = tpos + 1
+         do while (oldnam(tpos:tpos).ne.'.')
+             newnam(filpos:filpos) = oldnam(tpos:tpos)
+             filpos = filpos + 1;
+             tpos = tpos + 1
+             if (filpos.gt.8) then
+                 return
+             end if
+         end do
+         newnam(filpos:filpos) = ''
 c
           return
 c
-        else if (oldnam(spos:spos).eq.'/'.or.oldnam(spos:spos).eq.'\\')
+       else if (oldnam(spos:spos).eq.'/'.or.oldnam(spos:spos).eq.'\')
      1      then
+c         Filename has no extension
+          
           tpos = spos + 1
-c
-          do while (oldnam(tpos:tpos).ne.'/'.and.oldnam(tpos:tpos).ne.
-     1        '\\')
-            newnam(filpos:filpos) = oldnam(tpos:tpos)
-            filpos = filpos - 1
-            tpos = tpos - 1
-            if (tpos.lt.1.or.filpos.lt.1) return
+          
+c         
+          do while (tpos.lt.len(oldnam))
+                newnam(filpos:filpos) = oldnam(tpos:tpos)
+                filpos = filpos + 1;
+                tpos = tpos + 1
+                if (filpos.gt.8) then
+                 return
+             end if
+                
           end do
+           newnam(filpos:filpos) = ''
 c
           return
+          end if
+  10    continue
+          
 c
-        end if
-   10 continue
-c
-      newnam = oldnam(len(oldnam)-8:len(oldnam))
-      if (newnam.eq.'        ') newnam = oldnam(1:(len(oldnam)))
-c
+c     If we get here the name has no extension or path, just take first chars
+      tpos = 1
+      do while (tpos.lt.len(oldnam))
+          newnam(filpos:filpos) = oldnam(tpos:tpos)
+          filpos = filpos + 1
+          tpos = tpos + 1
+          if (filpos.gt.8) then
+               return
+          end if
+      end do
+      
+      newnam(filpos:filpos) = '';
       return
+      
       end

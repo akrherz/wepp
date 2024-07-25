@@ -282,6 +282,6 @@ c       reza, in the next line hradmj is in MJ
 c       hradmj = r5smap * cratio
 c     endif
 creza change 11/16/94
-1000      Format(1x,I5,8f10.2)
+c 1000      Format(1x,I5,8f10.2)
       return
       end

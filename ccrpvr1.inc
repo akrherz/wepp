@@ -16,8 +16,8 @@ c     + + + VARIABLE DECLARATIONS + + +
 
       real              rmogt,rmagt,rtm,smrm,mfo,pltol,rmfo
       real              resur
-      real				allbiomass_sum, allerosion_sum
-      integer			days_sum
+      real              allbiomass_sum, allerosion_sum
+      integer           days_sum
 
 c     + + + VARIABLE DEFINITIONS + + +
 

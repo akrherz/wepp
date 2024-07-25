@@ -76,11 +76,11 @@ c     2/16/2012 - jrf
       if (nhleft(ielmt).gt.0) areal = areal + hsarea(nhleft(ielmt))
       if (nhtop(ielmt).gt.0) areat = areat + hsarea(nhtop(ielmt))
       
-	qbasel = cbase * areal
-	qbaset = cbase * areat
+      qbasel = cbase * areal
+      qbaset = cbase * areat
       vbasel = qbasel * 86400.
-	vbaset = qbaset * 86400.
-	qBase(ichan) = vbasel + vbaset
+      vbaset = qbaset * 86400.
+      qBase(ichan) = vbasel + vbaset
 cw End adding
 cx    Modified by Arthur Xu, Incoporated in by S. Dun 01/06/2004
 cx    All subsurface flow from upsteam hillslopes is added into 

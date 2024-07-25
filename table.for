@@ -22,7 +22,7 @@ c
 c     + + + ARGUMENT DECLARATIONS + + +
 c
       integer length, flag
-      real colmn1(length), colmn2(length), given, found, mxfound
+      real colmn1(length), colmn2(length), given, found
 c
 c     + + + ARGUMENT DEFINITIONS + + +
 c
@@ -37,7 +37,7 @@ c     + + + COMMON BLOCKS + + +
 c
 c     + + + LOCAL VARIABLES + + +
 c
-      real intrpl, tval
+      real intrpl, tval, mxfound
       integer i, npos, j, k
 c
 c     + + + LOCAL DEFINITIONS + + +
@@ -60,6 +60,7 @@ c
 c     + + + END SPECIFICATIONS + + +
 c
 c
+      mxfound = 0.
       if (flag.ne.2) then
         if (flag.eq.3) go to 60
         if (flag.eq.4) go to 80

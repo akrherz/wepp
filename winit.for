@@ -64,8 +64,7 @@ c       read:  tildep(mxplan,mxplan)
 c
 c     +++LOCAL VARIABLES+++
 c     save
-      real    smtill,smutil
-      integer i, j
+      integer j
 c
 c     +++LOCAL DEFINITIONS+++
 c

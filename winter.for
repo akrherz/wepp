@@ -1,4 +1,4 @@
-      subroutine winter(wrain,snoflg)
+      subroutine winter(snoflg)
 c
 c     +++PURPOSE+++
 c     This subroutine calls the snowmelt, snowdrift, and frost
@@ -60,7 +60,7 @@ c       (gone)   (gone)                            (gone)
 c
 c
 c     +++ARGUMENT DECLARATIONS+++
-      real wrain
+c      real wrain
       integer snoflg
 c
 c     +++ARGUMENT DEFINITIONS+++
@@ -125,14 +125,13 @@ c     fine layer for frost simulation
       include 'cincon.inc'
 c
 c     +++LOCAL VARIABLES+++
-      integer itflag,isflag,temphr
+      integer itflag
       integer hour,numres,snohrs,rnhrs,i,j
-      real    tmpvr1,tmpvr2,tmpvr3,tmpvr4,tmpvr5
+      real    tmpvr2,tmpvr3,tmpvr4,tmpvr5
       real    tmpvr6,tmpvr7,tmpvr8,tmpvr9,tmpv10
       real    densgy,denh2o,snodep,densgt,halfdy,langmj,
-     1        durtn,k(4),randn,wbdtil(mxplan),bdutil(mxplan),
-     1        smtill(mxplan),smutil(mxplan)
-      real    dgutil,porutl(mxplan),portil(mxplan),estrad
+     1        durtn,k(4),randn
+      real    estrad
       real    driftf,driftg,fdrft,gdrft,smelt,temp24,totmel
       real    temp,dsunmp,cratio
 cd    Added in by S. Dun, July 12, 2007       
@@ -140,7 +139,6 @@ cd    Added in by S. Dun, July 12, 2007
       integer pstvhr
 cd    End adding
 c
-      save wbdtil,bdutil,porutl
       save temp24
 c
 c     +++LOCAL DEFINITIONS+++
@@ -207,16 +205,16 @@ c -- We borrowed CLIGEN'S random number gen. for storm time...
       k(3)=3*k(3)+k(1)
       k(2)=3*k(2)
       k(1)=3*k(1)
-      i=k(1)/1000
+      i=k(1)/1000.
       k(1)=k(1)-i*1000
       k(2)=k(2)+i
-      i=k(2)/100
+      i=k(2)/100.
       k(2)=k(2)-100*i
       k(3)=k(3)+i
-      i=k(3)/1000
+      i=k(3)/1000.
       k(3)=k(3)-i*1000
       k(4)=k(4)+i
-      i=k(4)/100
+      i=k(4)/100.
       k(4)=k(4)-100*i
       randn=((((k(1)*.001+k(2))*.01+k(3))*.001+k(4))*.01) * 24
       wnttim = aint(randn)
@@ -286,7 +284,7 @@ c
 
         call stmtim(rain(iplane),stmdur,hour,wnttim,rans,
 c     1              hrrain(hour),hrsnow(hour),hrtemp,
-     2              snodpt(iplane),rnhrs,snohrs,tmin)
+     2              snodpt(iplane),rnhrs,snohrs)
 c
         snow = snow + hrsnow(hour)
 

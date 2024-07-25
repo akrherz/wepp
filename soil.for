@@ -195,15 +195,15 @@ c
 c     + + + LOCAL VARIABLES + + +
       real daycnt(mxplan,2), denom, bdtll(2,mxplan), ao(2,mxplan),
      1    sscunf(mxnsl,mxplan)
-      real acyc, produc, ckrasc, ctcasc, frsl, frzlay, rkiatl, smf,
-     1    tcaft, pfc
+      real acyc, produc, ckrasc, ctcasc, rkiatl,
+     1    tcaft
       integer plant, i, kk
       integer i1, i2, n2
       real bdirf, ckiadr, ckiaft, ckialr, ckiasa, ckiasc, ckiawc,
      1    ckraft, ckrawc, ckrbgb, bddiff, bdiwt, rkiacr, rkialc, rkratl,
      1    rkracr, rkralc, ckiacc, ckiagc, rkiacc, rkiagc,
      1    ckradr, ckralr, ctcarr
-      real slo, pwater, tenkpa, frof, cbr,fzrati
+      real slo, pwater, tenkpa, cbr,fzrati
 
 c
 c     + + + LOCAL DEFINITIONS + + +
@@ -260,14 +260,16 @@ c     pwater - total soil water content in the topmost layer  (m/m)
 c     tenkpa - soil matric potential in topmost layer (KiloPascals)
 c
 c     + + + SAVES + + +
-      save ao, bdtll, daycnt, sscunf, frof
-      data frof/1.0/
+      save ao, bdtll, daycnt, sscunf
+c      data frof/1.0/
 c
 c     + + + SUBROUTINES CALLED + + +
 c     INFPAR
 c
 c     + + + DATA INITIALIZATIONS + + +
 c
+      ckraft = 0.
+      ckiaft = 0.
 c     + + + END SPECIFICATIONS + + +
 c
 c
@@ -991,7 +993,7 @@ c
 c
 c   The WINTER model needs to store water tension in units of m.
 c
-        tens(iplane) = tenkpa / 10.
+        tens(iplane) = tenkpa / 10.0
 c
 c       The main constant for the interrill erodibility adjustment
 c       due to frost and thaw is based upon the number of freeze-thaw
@@ -1283,9 +1285,9 @@ c
 c      Write(61, 1505) sdate, year,iplane,kradjf(iplane),
 c     1                rkratl,rkracr,ckraft,rkralc,
 c     1                ckrbgb,ckrasc,ckrawc,ckradr,ckralr
-1505  format(1x, 3I6, 10E12.3)
+c 1505  format(1x, 3I6, 10E12.3)
 CAS
-2000  format(1x,2I4,8(1x,F10.4))
+c 2000  format(1x,2I4,8(1x,F10.4))
 CAS
       return
       end

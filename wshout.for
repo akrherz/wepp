@@ -86,11 +86,11 @@ c       determine total soil water content for all the
 c       Channels this date
 c
         watcon = 0.0
-		watconf = 0.0
+        watconf = 0.0
 c
         do 10 i = 1, nsl(iplane)
           watcon = watcon + soilw(i,iplane)
-		  watconf = watconf + soilf(i,iplane)
+          watconf = watconf + soilf(i,iplane)
    10   continue
    
   
@@ -233,7 +233,7 @@ c
         treal(81) = fribas(iplane)
         treal(82) = frican(iplane)
         treal(83) = daydis(iplane)
-		
+        
         treal(84) = ofelod(iplane) * 0.67196
         treal(85) = eres(iplane) * 1000.0 / 25.4
         
@@ -266,8 +266,8 @@ c
 c       write the daily information
 c
 c        write (40,1000) tint(1), treal, (tint(i),i = 2,8)
-		
-		write (40,1000) tint(1), (treal(i),i=1,83), (tint(i),i = 2,8),
+        
+        write (40,1000) tint(1), (treal(i),i=1,83), (tint(i),i = 2,8),
      1         (treal(i),i=84,96)
 c
 c     WEPP has completed - append min/max values
@@ -280,8 +280,8 @@ c
 c
 c        write (40,1000) intmin(1), ralmin, (intmin(i),i = 2,8)
 c        write (40,1000) intmax(1), ralmax, (intmax(i),i = 2,8)
-		
-		write (40,1000)intmin(1),(ralmin(i),i=1,83),(intmin(i),i = 2,8),
+        
+        write (40,1000)intmin(1),(ralmin(i),i=1,83),(intmin(i),i = 2,8),
      1        (ralmin(i),i=84,96)
         write (40,1000)intmax(1),(ralmax(i),i=1,83),(intmax(i),i = 2,8),
      1        (ralmax(i),i=84,96)

@@ -56,10 +56,10 @@ c
 c     +++LOCAL VARIABLES+++
 c
       integer  j,i,ffztuf,wklyn,wkflyn,lyblwk,flblwk,flgcal,
-     1         ftthln,ftthfl,varki,varwtk,vardrk,varwfk,vardfk,
+     1         ftthln,ftthfl,varwtk,vardrk,varwfk,vardfk,
      1         jend
-      real     wtPkpa,wpmj,wpmjp1,kusj,kusjp1,vartim,
-     1    smoist,sdepth,varwtp,varkus,varsmc,varflx,varsm,
+      real     wpmj,wpmjp1,kusj,kusjp1,vartim,
+     1    smoist,sdepth,varwtp,varkus,varflx,
      1    surthd,topthd,topfdp,btmfdp,varj,varjp1,
      1    varwet,vardry,varsmw,varsmd,swavg,
      1    flthck,flbltk,ftthtk,vartkw,vartkd
@@ -111,6 +111,9 @@ c     +++END SPECIFICATIONS+++
 c
       smoist = 0.001
       sdepth = 0.001
+      ftthln = 0.
+      ftthfl = 0.
+      
       if(frdp(iplane) .lt. sdepth) frdp(iplane) = 0.0
       if(tfrdp(iplane) .lt. sdepth) tfrdp(iplane) = 0.0
 c

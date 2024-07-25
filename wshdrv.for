@@ -232,7 +232,6 @@ cd      real dslost(mxplan,100), xmxint(mxplan), mxint, effdrr(mxplan),
      1    rcalsl, avdatm, hday, sumrtm, sumsrm, warain, dsunmp, toplen
 c
       character*8 inifil
-      character*51 filen
 c
 c     + + + LOCAL DEFINITIONS + + +
 c
@@ -718,7 +717,7 @@ c             temperature < 0.0 or the frost depth > 0.0
 c
               if ((snodpy(iplane).gt.0.0).or.(tmin.le.0.0).or.(
      1            frdp(iplane).gt.0.0)) then
-                call winter(rain(iplane),snoflg)
+                call winter(snoflg)
                 rain(iplane) = 0.0
                 norain(iplane) = 0
                 wntflg(iplane) = 1
@@ -1042,7 +1041,7 @@ c
 c     8-8-2007 statement commented out because it prevents subsurface and
 c     runoff events from existing on the same day
 c                  if ((solwpv.eq.2006).or.(chkflg.ne.2)) then
-                    call chnero(ichplt,sdate,nptsc,toplen,year)
+                    call chnero(ichplt,sdate,nptsc,toplen)
 c                  end if
 c Added by L. Wang, 9/11/2009.
                   endif
@@ -1323,7 +1322,7 @@ c
         call strip(scefil,inifil)
 c
         write (47,2400) inifil
-        if (inifil.eq.'        ') inifil = crpnam(j)
+c        if (inifil.eq.'        ') inifil = crpnam(j)
 c
         write (47,2500) (mancom(i),i = 1,3)
 c
@@ -1370,8 +1369,8 @@ c
       close (59)
 c Added by L. Wang for channel routing, 08/20/2009.
       if(ipeak>2 .and. ichout>0) then
-	   close(60)
-	endif
+         close(60)
+      endif
 c End adding.
       if (luntc.gt.0) then
         close(65)
@@ -1416,8 +1415,8 @@ c
  2400 format (a)
  2500 format (a60,/,a60,/,a60)
  2600 format ('*** WARNING *** Assuming 1 year simulation')
- 2700	format(1x, 3(i5,2x), 3x, f7.0, 5x, '0.00')
- 2701	format(1x, 3(i5,2x), 5x, '0.00', 6x, '0.00')
+c 2700 format(1x, 3(i5,2x), 3x, f7.0, 5x, '0.00')
+c 2701 format(1x, 3(i5,2x), 5x, '0.00', 6x, '0.00')
  2800 format (1x,i4,2x,'C',i4,2x,i3,2x,i4,1x,4(f7.2,2x))
  2900 format (1x,i4,2x,'I',i4,2x,i3,2x,i4,1x,4(f7.2,2x))
  3000 format ('Element Chan   Day Year  Runoff   Time of  Storm',

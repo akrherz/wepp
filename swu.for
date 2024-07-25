@@ -85,6 +85,7 @@ c                ie, 0.953346.
 c
 c     + + + DATA INITIALIZATIONS + + +
       data uob /0.953346/, ub /3.065/
+      ixx = 0
 c
 c     + + + END SPECIFICATIONS + + +
 c

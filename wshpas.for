@@ -420,10 +420,10 @@ cw Added by L. Wang, 12/04/2009
               do k = 1,nhill
                 qptsum = qptsum + (tmppkr(k) + tmpsbv(k) / 86400.)
      1                   * tmptcs(k) * 3600.
-	          qpsum = qpsum + tmppkr(k) + tmpsbv(k) / 86400.
-	        enddo
-	        
-	       
+              qpsum = qpsum + tmppkr(k) + tmpsbv(k) / 86400.
+            enddo
+            
+           
 cw End adding              
 cx    Added by Arthur Xu, 05/2000
             else if (iflag.eq.2)then
@@ -445,15 +445,15 @@ cw Added by L. Wang, 12/04/2009
         trise = qptsum/qpsum
 cw Change back to user-defined time step, L. Wang, 6/13/2012
 cw        dtchr = trise/10.
-cw	    if(dtchr < dtlowl) dtchr = dtlowl
-cw	    if(imodel == 1) then
-cw	       if(dtchr > dtupl1) dtchr = dtupl1
-cw	    else
-cw	       if(dtchr > dtupl2) dtchr = dtupl2
-cw	    endif
-cw	    ntchr = 86400./dtchr + 0.99
-cw	    if(ntchr > mxtchr) ntchr = mxtchr
-cw	    dtchr = 86400./ntchr
+cw        if(dtchr < dtlowl) dtchr = dtlowl
+cw        if(imodel == 1) then
+cw           if(dtchr > dtupl1) dtchr = dtupl1
+cw        else
+cw           if(dtchr > dtupl2) dtchr = dtupl2
+cw        endif
+cw        ntchr = 86400./dtchr + 0.99
+cw        if(ntchr > mxtchr) ntchr = mxtchr
+cw        dtchr = 86400./ntchr
 cw End adding   
 c
         close (unit=49)

@@ -1,4 +1,4 @@
-      subroutine xcrit(a,b,c,tauc,xb,xe,qostar,xc1,xc2,mshear)
+      subroutine xcrit(a,b,c,tauc,xb,xe,xc1,xc2,mshear)
 c
 c     + + + PURPOSE + + +
 c     Determines whether shear stress exceeds critical shear stress
@@ -25,7 +25,7 @@ c
 c     + + + KEYWORDS + + +
 c
 c     + + + ARGUMENT DECLARATIONS + + +
-      real a, b, c, tauc, xb, xe, qostar, xc1, xc2
+      real a, b, c, tauc, xb, xe, xc1, xc2
       integer mshear
 c
 c     + + + ARGUMENT DEFINITIONS + + +

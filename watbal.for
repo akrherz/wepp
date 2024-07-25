@@ -467,7 +467,7 @@ c       ------ compute evapotranspiration (ET).
 cd    S. Dun switched the evportranspiration method to Penman-Monteith 
         if (iflget.eq.1) then
 CAS
-           call evap(elevm,nowcrp)
+           call evap(elevm)
 CAS end
         else
            call evappm(elevm,nowcrp)
@@ -1014,7 +1014,7 @@ cd     1               , i = 1, nsl(iplane))
 cd             write(62,1550) sdate,year,ihill,iplane,surdra(iplane)*1000.
 cd     1              ,runoff(iplane)*1000.* efflen(iplane)/slplen(iplane)
 cd      endif 
-1500         format(1x,4i6, 10f6.2)
+c 1500         format(1x,4i6, 10f6.2)
 cd1550         format(1x,4i6, 2f8.3)   
 c
 c
@@ -1070,10 +1070,10 @@ c
      1    1x,f6.4,3(1x,i1,1x,f6.4),3(1x,f6.4),1x,i1,1x,f6
      1    .4,2(1x,i1,1x,f6.4),1x,f5.1)
  1100 format (1x,i2,2x,i3,2x,i5,1x,9f7.2)
- 1200 format (1x,i3,1x,i3,1x,i3,1x,6(f6.2,1x),1x,f4.2,2x,f6.2,3x,f7.2)
+c 1200 format (1x,i3,1x,i3,1x,i3,1x,6(f6.2,1x),1x,f4.2,2x,f6.2,3x,f7.2)
  1300 format (1x,3(1x,I4),2(1x,f7.2),1x,e15.7,4(1x,f7.2),
      1        1x,e15.7,5(1x,f7.2),2x,e15.7,2(1x,f7.2),1x,f10.2)
- 2300 format (1x,3(1x,I4),11(1x,f9.2))
+c  2300 format (1x,3(1x,I4),11(1x,f9.2))
       end
 
  

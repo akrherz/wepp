@@ -12,7 +12,7 @@ c     + + + VARIABLE DECLARATIONS + + +
 
       integer           npart
       real              frac
-	  integer           usr_partsize
+      integer           usr_partsize
 
 c     + + + VARIABLE DEFINITIONS + + +
 

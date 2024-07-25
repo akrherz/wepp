@@ -117,7 +117,7 @@ c
               if (Ypshft.lt.0) Ypshft = Ypshft + 365.0
           endif
 c                  
-40      enddo 
+        enddo 
 c
 cd    The alternative method if Newton Mehtod would not converge after 20 iterations
       if(nir.ge.20) then

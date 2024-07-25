@@ -1,4 +1,4 @@
-      subroutine strout(elem,flag,npart,darea,ielmt,ichan,sdate,nelmt)
+      subroutine strout(elem,flag,npart,darea,ielmt,ichan,nelmt)
 c
 c     + + + PURPOSE + + +
 c
@@ -24,7 +24,7 @@ c
 c     + + + ARGUMENT DECLARATIONS + + +
 c
       real darea
-      integer elem, flag, npart, ielmt, ichan, sdate,nelmt
+      integer elem, flag, npart, ielmt, ichan,nelmt
 c
 c     + + + ARGUMENT DEFINITIONS + + +
 c
@@ -153,7 +153,7 @@ c
 c
 c       compute channel sediment enrichment
 c
-        call enrcmp(2,ielmt,nelmt,tgs,elem)
+        call enrcmp(2,ielmt,nelmt,elem)
         write (38,1900)
 c
         return
@@ -169,7 +169,7 @@ c
 c
 c     compute channel sediment enrichment
 c
-      call enrcmp(1,ielmt,nelmt,tgs,elem)
+      call enrcmp(1,ielmt,nelmt,elem)
 c
       if (flag.lt.4) return
 c

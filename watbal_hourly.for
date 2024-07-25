@@ -199,10 +199,10 @@ c
      1    etplcp, subrin, ui_LFtstpF, deepSeep, watbl, tileDrainage
       integer i, mn, jj, lflag, ii, ictop, icleft, icrght, uzone
 c
-	  real hrfin, tdvv
+      real hrfin, tdvv
 c
-cd	Variable added by S. Dun. May 26, 2007
-c	A flag to indicate a if a layer meets subsurface lateral flow criteria 
+cd    Variable added by S. Dun. May 26, 2007
+c    A flag to indicate a if a layer meets subsurface lateral flow criteria 
 c   from Erin Brooks.
       integer meblfc
 c
@@ -338,7 +338,7 @@ c???    Check impondment part later
      1            *efflen(iplane-1)/slplen(iplane)     
           subrin = sbrunf(iplane-1)
      1            *(fwidth(iplane-1)*slplen(iplane-1))
-     1	          /(fwidth(iplane)*slplen(iplane))
+     1              /(fwidth(iplane)*slplen(iplane))
         else
           fin = fin - runoff(iplane)
           runoffin(iplane) = 0.0
@@ -409,20 +409,19 @@ cd      end adding
           ui_LFtstpF = 24.0
           
           sbrunf(iplane) = 0.0
-	    surdra(iplane) = 0.0 
-	if(iplane.eq.1) then
-		do 73 ii = 1, ui_LFtstp	
-			ui_SUrunf(ii) =0.0 
-			ui_SCrunf(ii) = 0.0
-			ui_LfUrf(ii) = 0.0
-			ui_LfCrf(ii) = 0.0
-   73		continue
+          surdra(iplane) = 0.0 
+        if(iplane.eq.1) then
+          do 73 ii = 1, ui_LFtstp    
+              ui_SUrunf(ii) =0.0 
+              ui_SCrunf(ii) = 0.0
+              ui_LfUrf(ii) = 0.0
+              ui_LfCrf(ii) = 0.0
+   73     continue
       else
-		do 74 ii = 1, ui_LFtstp	
-
-			ui_SCrunf(ii) = 0.0
-			ui_LfCrf(ii) = 0.0
-   74		continue
+          do 74 ii = 1, ui_LFtstp    
+              ui_SCrunf(ii) = 0.0
+              ui_LfCrf(ii) = 0.0
+   74     continue
 
 
       endif
@@ -439,17 +438,17 @@ c       Commented by S. Dun, Jan. 18, 2011
 cd        if (fin.gt.0.0) then
 c         -------- available water      
           if ((ivers.ne.3).and.(contrs(nowcrp,iplane).ne.1)) then
-	       if(iplane.gt.1) then
-	       
+           if(iplane.gt.1) then
+           
             xfin = fin/ui_LFtstpF + (ui_LfUrf(ii) + ui_SUrunf(ii))
      1                 *(fwidth(iplane-1)*slplen(iplane-1))
      1                 /(fwidth(iplane)*slplen(iplane))
-	       else
-	          xfin = fin/ui_LFtstpF
-	       endif
-	     else
-	         xfin = fin/ui_LFtstpF
-	     endif
+           else
+              xfin = fin/ui_LFtstpF
+           endif
+         else
+             xfin = fin/ui_LFtstpF
+         endif
 cd            hrfin = xfin
 
           hrfin = xfin
@@ -482,18 +481,18 @@ c         ---------- If plow layer does not end in current soil layer, add water
           endif
 c
           if(hrfin.lt.-0.00001) then
-		    if(st(i,iplane).lt. (-tmpvr1)) tmpvr1 = -st(i,iplane)
-	    endif
+            if(st(i,iplane).lt. (-tmpvr1)) tmpvr1 = -st(i,iplane)
+        endif
 c
           st(i,iplane) = st(i,iplane) + tmpvr1
           xfin = xfin - tmpvr1
 c       
 c         *** End L2-Loop ***
 c
-	  if (hrfin.ge.0.0) then
+      if (hrfin.ge.0.0) then
           if ((i.lt.nsl(iplane)).and.xfin.gt.0.00001) go to 20
-	  else
-	    if ((i.lt.nsl(iplane)).and.xfin.lt.-0.00001) go to 20
+      else
+        if ((i.lt.nsl(iplane)).and.xfin.lt.-0.00001) go to 20
         endif
          endif
 c
@@ -527,7 +526,7 @@ c
 c       ------ compute evapotranspiration (ET).
 cd    S. Dun switched the evportranspiration method to Penman-Monteith 
           if (iflget.eq.1) then
-             call evap(elevm,nowcrp)
+             call evap(elevm)
           else
              call evappm(elevm,nowcrp)
           endif
@@ -607,31 +606,31 @@ c        fcdfz = 0.0
           drfc(i) = fc(i) + ((1-coca(i,iplane))*dg(i,iplane))
 c
 cd        Added by S. Dun, March 13, 2008
-	  fzdrfc = drfc(i) - frzw(i,iplane)
-	  if (fzdrfc .lt. 0.) fzdrfc = 0.
+      fzdrfc = drfc(i) - frzw(i,iplane)
+      if (fzdrfc .lt. 0.) fzdrfc = 0.
 cd        end adding
          
 cd     -------------------------------------------------
-cd	Modified by S. Dun May 26, 2007
-c	This is a big change based on Erin Brooks
-c	We are assuming that only saturated lateral occurs.  
-c	There is no unsaturated lateral flow because we assume the hydraulic gradient of
-c	 a wetting front is mostly vertical.
+cd    Modified by S. Dun May 26, 2007
+c    This is a big change based on Erin Brooks
+c    We are assuming that only saturated lateral occurs.  
+c    There is no unsaturated lateral flow because we assume the hydraulic gradient of
+c     a wetting front is mostly vertical.
 c
 c    We define whether a layer has a saturated layer with the following criteria: 
-c	either the layer below is saturated or the layer below is the restrictive layer 
-c	at the bottom of the soil profile. 
-	    if (i .eq. nsl(iplane)) then
-		     meblfc = 1
-	    elseif ((st(i+1,iplane)/ul(i+1,iplane)).ge.1.0) then
-	       meblfc = 1
-	    else
-		     meblfc = 0
-	    endif
+c    either the layer below is saturated or the layer below is the restrictive layer 
+c    at the bottom of the soil profile. 
+        if (i .eq. nsl(iplane)) then
+             meblfc = 1
+        elseif ((st(i+1,iplane)/ul(i+1,iplane)).ge.1.0) then
+           meblfc = 1
+        else
+             meblfc = 0
+        endif
 c
           if ((st(i,iplane).ge.fzdrfc).and. meblfc.eq.1) then
              fcdep = fcdep + dg(i,iplane)
-	       tdvv = tdvv +(st(i,iplane) - fzdrfc)
+           tdvv = tdvv +(st(i,iplane) - fzdrfc)
           else
              unsdep(iplane) = unsdep(iplane) + dg(i,iplane)
           end if
@@ -667,13 +666,13 @@ cd        For merging Erin's lateral flow version
 cd        For Erin's lateral flow version
           do 66 mn = 1, nsl(iplane)
 
-			if (mn .eq. nsl(iplane)) then
-				meblfc = 1
-			elseif ((st(mn+1,iplane)/ul(mn+1,iplane)).ge.1.0) then
-			    meblfc = 1
-	      else
-				meblfc = 0
-	      endif
+            if (mn .eq. nsl(iplane)) then
+               meblfc = 1
+            elseif ((st(mn+1,iplane)/ul(mn+1,iplane)).ge.1.0) then
+               meblfc = 1
+            else
+               meblfc = 0
+            endif
 c
             if ((st(mn,iplane).ge.drfc(mn)).and. meblfc.eq.1) then
 
@@ -683,7 +682,7 @@ c
               avcoca = avcoca + (coca(mn,iplane)*(dg(mn,iplane)/fcdep))
 
               fffx = (st(mn,iplane)-drfc(mn))/(ul(mn,iplane)-drfc(mn))
-			  if (fffx.gt.1) fffx = 1
+              if (fffx.gt.1) fffx = 1
               totK = totK + (ui_ssh(mn,iplane)*fffx*dg(mn,iplane))
             end if
             
@@ -857,11 +856,11 @@ c
 
       sep(iplane) = deepSeep
       
-       ui_HUrunf = ui_HCrunf
-	do 76 ii = 1, ui_LFtstp
-	   ui_SUrunf(ii) = ui_SCrunf(ii)
-	   ui_LfUrf(ii) = ui_LfCrf(ii)
-   76	continue
+      ui_HUrunf = ui_HCrunf
+      do 76 ii = 1, ui_LFtstp
+         ui_SUrunf(ii) = ui_SCrunf(ii)
+         ui_LfUrf(ii) = ui_LfCrf(ii)
+   76    continue
 c
           if ((ivers.eq.3).or.(contrs(nowcrp,iplane).ne.0)) then
 c     runoff is from subsurface flow only
@@ -1074,7 +1073,7 @@ cd     1               , i = 1, nsl(iplane))
 cd             write(62,1550) sdate,year,ihill,iplane,surdra(iplane)*1000.
 cd     1              ,runoff(iplane)*1000.* efflen(iplane)/slplen(iplane)
 cd      endif 
-1500         format(1x,4i6, 10f6.2)
+cd  1500         format(1x,4i6, 10f6.2)
 cd1550         format(1x,4i6, 2f8.3)   
 c
 c
@@ -1127,10 +1126,10 @@ c
      1    1x,f6.4,3(1x,i1,1x,f6.4),3(1x,f6.4),1x,i1,1x,f6
      1    .4,2(1x,i1,1x,f6.4),1x,f5.1)
  1100 format (1x,i2,2x,i3,2x,i5,1x,9f7.2)
- 1200 format (1x,i3,1x,i3,1x,i3,1x,6(f6.2,1x),1x,f4.2,2x,f6.2,3x,f7.2)
+c     1200 format (1x,i3,1x,i3,1x,i3,1x,6(f6.2,1x),1x,f4.2,2x,f6.2,3x,f7.2)
  1300 format (1x,3(1x,I4),2(1x,f7.2),1x,e15.7,4(1x,f7.2),
      1        1x,e15.7,5(1x,f7.2),2x,e15.7,2(1x,f7.2),1x,f10.2)
- 2300 format (1x,3(1x,I4),11(1x,f9.2))
+c    2300 format (1x,3(1x,I4),11(1x,f9.2))
       end
 
 

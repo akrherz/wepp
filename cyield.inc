@@ -11,7 +11,7 @@ c     + + + VARIABLE DECLARATIONS + + +
 
       integer           iyldct,crpcount
       real              sumyld
-      real				crpyield,avgyield
+      real              crpyield,avgyield
 
 c     + + + VARIABLE DEFINITIONS + + +
 

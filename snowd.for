@@ -32,9 +32,9 @@ c     +++ COMMON BLOCKS +++
       include 'cclim.inc'
 c
 cd     Added by S. Dun, June 15, 2007
-      real densIc, wdaycy
+      real densIc
 cd     End adding 
-      real setf,wrain
+      real setf
 c
 c --------------------------
 c
@@ -189,7 +189,7 @@ c     Loop N3
 c
 c -- Note that melt is calculated in terms of meters of water melted.
 c
-            call melt(irtype,wrain,hour)
+            call melt(irtype,hour)
 c
             if (wmelt(iplane) .gt. 0.0) then
 cd              densgy = densg(iplane)

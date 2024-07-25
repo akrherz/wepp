@@ -1,5 +1,5 @@
       subroutine stmtim(rain,stmdur,hour,wnttim,rans,
-     1                  snodpt,rnhrs,snohrs, daytmin)
+     1                  snodpt,rnhrs,snohrs)
 c     +++ PURPOSE +++
 c     This subroutine handles winter storm time and duration calculations.
 c     It was originally incorporated into WINTER, but was split out
@@ -8,7 +8,7 @@ c
 c     +++ ARGUMENT DECLARATIONS +++
       integer hour,rnhrs,snohrs
       real    rain,stmdur,wnttim,snodpt
-      real    rans, daytmin
+      real    rans
 c
 c     +++ ARGUMENT DEFINITIONS +++
 c

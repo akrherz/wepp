@@ -46,6 +46,7 @@ c       read: tstar
 c
 c     + + + END SPECIFICATIONS + + +
 c
+      sintdp = 0.
 c***************************************************************
 c    SINT = integral of S with respect to T, from 0 to TIME.   *
 c***************************************************************

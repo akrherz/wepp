@@ -59,7 +59,7 @@ c     save
       real    alb,rads,lytomj,clouds,ktemp,aemiss,displ,wsrgh,etrgh,
      1        convht,vkcons,denair,hcpair,htwind,radcof,semiss,sbcons,
      2        netrad,grdp,gutdp,sysdep,ksnow,kres,kftill,kfutil,
-     3        numer,denom,surfcn,effk,bakup, gtdp, hrtave,factor
+     3        numer,denom,surfcn,effk, gtdp, hrtave
 c    2        netrad,radadj,grdp,gutdp,sysdep,ksnow,kres,kftill,kfutil,
 c
 c     +++LOCAL DEFINITIONS+++
