@@ -175,10 +175,8 @@ c     + + + END SPECIFICATIONS + + +
 c
 c
 CAS
-      integer numres, nowres
-      integer numresrtm,cntrtm
-      real rmogt2, rmogt3, cf2, cf3, rtm2, rtm3
-      save cntrtm
+      integer numres
+      real rmogt2, rmogt3, cf2, cf3
 c     Determine number of residue groups currently being tracked
 c
       if (iresd(3,iplane).ne.0) then

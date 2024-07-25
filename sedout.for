@@ -140,7 +140,7 @@ c
 c
 c     + + + LOCAL DECLARATIONS + + +
 c
-      integer i, ilay, j, jend, jun, nelem1, nelem2, nelem3,m,k,jj,l
+      integer i, ilay, jend, jun, nelem1, nelem2, nelem3,m,jj,l
       integer nowres
       real ss1, ss2, ss3, watcon, x1, x2, x3, avirdt,kgmtpa,mtf,earea,
      1  marea,kgmlpf,sedyld, runt
@@ -189,6 +189,10 @@ c     english hillslope area
       earea=totlen(nplane)*mtf*fwidth(1)*mtf
 c     metric hillslope area
       marea=totlen(nplane)*fwidth(1)
+      ncol44 = 0
+      ncol33 = 0
+      ncol22 = 0
+      jend = 0
 c
 c     data unit
 c     1=mm
@@ -330,7 +334,7 @@ c
           end if
           
 c  jrf - SCI for NRCS
-	  call scireport(jun)
+         call scireport(jun)
 c	  
           write (jun,1900)
           if (iroute.eq.0) avsole = 0.0

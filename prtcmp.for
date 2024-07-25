@@ -344,8 +344,8 @@ c
           jflag = 1
           go to 20
         end if
-      end if
-	  
+       end if
+
 c     End of new IF-ENDIF for code to allow user to
 c     read in their own particle characteristics.
       endif

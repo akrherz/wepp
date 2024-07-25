@@ -157,9 +157,12 @@ c******************************************************************
      1    ctclst, sterm1, sterm2, spart1, tpart1, tterm1, tterm2, tprod,
      1    denom, shrspv, qi, rif, intdr, drinti(mxpart), az,bz
       real trcoef,shrati,tcrati,falvel,pkro
-      real xxstar,qpoint,shcalc,shrpnt,slppnt
       real qtop,ktop,shrtp1,ktop1,ktop2
       integer i,k,iclass
+      
+      beta = 0.
+      tcprev = 0.
+      ktrprv = 0.
 c
 c Compute actual slope gradient at the end of slope (slpend):
 c
@@ -541,6 +544,7 @@ c
       diaeff = 0.0
       spgeff = 0.0
       sumf = 0.0
+      veleff = 0.
 c
 c
 c     NEEDS TO BE SOME CORRECTIONS MADE HERE - TO COMPUTE THE EFFECTIVE

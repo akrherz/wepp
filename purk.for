@@ -121,8 +121,8 @@ c	LFtstp time step variable were added in the soil moisture adjustment
 cd    End adding      
 c
 c     + + + LOCAL VARIABLES + + +
-      real vv, sepsav,vartmp, varufz,tolwat,varuf1
-      integer k1, k2, i
+      real vv, sepsav, varufz,varuf1
+      integer k1, k2
 c
 c     + + + LOCAL DEFINITIONS + + +
 c     vv     - Water excess beyond field capacity for the current

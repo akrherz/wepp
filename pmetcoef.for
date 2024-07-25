@@ -80,11 +80,10 @@ c    read in coefficient in RAW formula
 c
 c
 1000    format('*************** Notice *****************')
-1010    format(a8)
 1020    format(1x,'No Penman-Monteith ET parameters in defaut data for')
 1030    format(1x,'Using parameters of the crop')
-1040    format(1x,'if you are not satified with the selected crop,',/,1x,
-     1    'Please add in corresponding parameters for your crop',/,1x,
-     1    'in the file pmetpara.txt')
+1040    format(1x,'if you are not satisfied with the selected crop,',
+     1    /,1x,'Please add in corresponding parameters for your crop',
+     1    /,1x,'in the file pmetpara.txt')
       return
       end

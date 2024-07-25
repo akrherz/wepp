@@ -62,6 +62,8 @@ c
 c     + + + END SPECIFICATIONS + + +
 c
 cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+      
+      irrunp = 0.
 c
       if (nirrm.eq.0) then
         write (31,1100)

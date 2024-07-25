@@ -128,11 +128,11 @@ CASnew
 c
 c
 c     + + + LOCAL VARIABLES + + +
-      integer intcrp, idecom, nowres, iadflg
+      integer intcrp, nowres, iadflg
       real silamt,vdmact,pyld,vdmttmp
 CASnew
       character*50 ystr
-      real newhgt,laic,gddc
+      real laic,gddc
       integer cutflg
 CASnew
 c
@@ -288,7 +288,7 @@ c       *** L1 ELSE-IF ***
 c
 CASnew A. Srivastava
 CAS          isenes(iplane) = 1 !! This was causing dead roots not to decompose. 
-CAS								!! isenes = 1 was not shifting residue pools at harvest or senescence.		  
+CAS                                !! isenes = 1 was not shifting residue pools at harvest or senescence.          
 CASnew
           call resup(nowcrp,isenes(iplane))
           intcrp = 1
@@ -406,9 +406,9 @@ CASnew1
              if(mgtopt(nowcrp,iplane).eq.4) then
                  cutflg = 14
                  call resup2(nowcrp,cutflg,pyld)
-!!				 isenes(iplane) = 0 !! resetting isenes(iplane) = 0; 
-									!! Assuming after annual crop cutting isenes becomes zero.
-									!! This could be discussed.
+!!                 isenes(iplane) = 0 !! resetting isenes(iplane) = 0; 
+                                      !! Assuming after annual crop cutting isenes becomes zero.
+                                      !! This could be discussed.
              endif
 c
             end if
@@ -510,9 +510,9 @@ CASnew1
              if(mgtopt(nowcrp,iplane).eq.6) then
                  cutflg = 14
                  call resup2(nowcrp,cutflg,pyld)
-!!				 isenes(iplane) = 0 !! resetting isenes(iplane) = 0; 
-									!! Assuming after annual crop cutting isenes becomes zero.
-									!! This could be discussed.
+!!                 isenes(iplane) = 0 !! resetting isenes(iplane) = 0; 
+                                    !! Assuming after annual crop cutting isenes becomes zero.
+                                    !! This could be discussed.
              endif
 c
             end if
@@ -562,7 +562,7 @@ c         -------- summer crop or winter crop
      1        jdplt(nowcrp,iplane)).or.(sdate.le.jdharv(nowcrp,iplane)))
      1        )) then
 c
-            call grow(nowcrp,iplane,0.0,0.0,ncount(iplane),idecom)
+            call grow(nowcrp,iplane,0.0,0.0,ncount(iplane))
           end if
           end if
 c

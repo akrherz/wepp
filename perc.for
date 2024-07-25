@@ -107,7 +107,7 @@ c       read:  snodpt(iplane),tfrdp(mxplan),tthawd(mxplan),frdp(mxplan),
 c              thdp(mxplan),densg(mxplan)
 c
 c     + + + LOCAL VARIABLES + + +
-      real stz, fx, stu, cr, zz, funzz, sscz,vartm1,vartm2
+      real stz, fx, stu, cr, zz, funzz, sscz
       integer meblfc
 c
 c     + + + LOCAL DEFINITIONS + + +
@@ -151,28 +151,28 @@ cd          stu = st(k1+1,iplane) / ul(k1+1,iplane)
       
 c
 cd     -------------------------------------------------
-cd	Added by S. Dun May 26, 2007
-c	This is a big change based on Erin Brooks
-c	a saturated layer as defined by the criteria above (comments is in lateral flow part) 
-c	then I think we should use a fffx value of 1 when calculating the percolation to 
-c	the lower layer since the water flow across the lower boundary of that layer is by definition saturated.
+cd    Added by S. Dun May 26, 2007
+c    This is a big change based on Erin Brooks
+c    a saturated layer as defined by the criteria above (comments is in lateral flow part) 
+c    then I think we should use a fffx value of 1 when calculating the percolation to 
+c    the lower layer since the water flow across the lower boundary of that layer is by definition saturated.
       if (ui_run.eq.1) then
-	  if (k1 .eq. nsl(iplane)) then
-		  meblfc = 1
-	  elseif (stu.ge.0.95) then
-		  meblfc = 1
-	  else
-		  meblfc = 0
-	  endif
-	  
-	
-cd	abvfc = fc(k1) + ((1-coca(k1,iplane))*dg(k1,iplane))
-cd	if ((st(k1,iplane).gt.abvfc).and. (meblfc.eq.1)) then
-cd		fx = 1
-cd	endif
-	  if(meblfc.eq.1) fx = 1
-	endif
-cd	End adding      
+      if (k1 .eq. nsl(iplane)) then
+          meblfc = 1
+      elseif (stu.ge.0.95) then
+          meblfc = 1
+      else
+          meblfc = 0
+      endif
+      
+    
+cd    abvfc = fc(k1) + ((1-coca(k1,iplane))*dg(k1,iplane))
+cd    if ((st(k1,iplane).gt.abvfc).and. (meblfc.eq.1)) then
+cd        fx = 1
+cd    endif
+      if(meblfc.eq.1) fx = 1
+      endif
+cd    End adding      
 c
 cx    Added by Arthur. Incorperated by S. Dun Dec. 03, 2003
 cx     Modificaitons are made to simulate the bottom rock layer. 

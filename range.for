@@ -180,7 +180,8 @@ c     + + + LOCAL VARIABLES + + +
       integer grotyp, jfrost, iwarn, plant, i
       real x1, x2, x3, x4, x5(mxcrop), x6(mxcrop), tmpave, rmagy, rmogy
       real tlivey, smrati, rratio, rgc
-      integer nowres, idecom(mxplan)
+      integer nowres     
+c      integer idecom(mxplan)
 c
 c     + + + LOCAL DEFINITIONS + + +
 c     oldplt -
@@ -329,8 +330,7 @@ c       -- XXX -- Huh? -- CRM -- 3/31/93.
 c       Original Code:
 c       call grow(nowcrp,iplane,ncount(iplane),idecom
 c       1          ,istart,tempvar,x5,x6,tmpflg)
-        call grow(nowcrp,iplane,x5(plant),x6(plant),ncount(iplane),
-     1      idecom(iplane))
+        call grow(nowcrp,iplane,x5(plant),x6(plant),ncount(iplane))
 c
 c       ------- fraction of potential (unstressed) leaf biomass accrued
 c       today, minus fraction accrued yesterday (can be negative)

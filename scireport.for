@@ -23,7 +23,6 @@ c     + + + COMMON BLOCKS + + +
       include 'ctemp.inc'
       
 c     + + + LOCAL VARIABLES + +       
-      integer ipl
       real sand, clay
       real texmult, sci_om_factor
       real adjtotalrennerom
@@ -52,57 +51,57 @@ CAS Using sand and silt content directly from top soil layer (without layer adju
         sand = scisand1(1,i)
         clay = sciclay1(1,i)
         if (clay .gt. 0.40) then
-	    texclass = 12 !'c   '
-	    if (sand .gt. 0.45) texclass = 10 !'sc  '
-	    if ((sand+clay) .lt. 0.60) texclass = 11 !'sic '
+        texclass = 12 !'c   '
+        if (sand .gt. 0.45) texclass = 10 !'sc  '
+        if ((sand+clay) .lt. 0.60) texclass = 11 !'sic '
         else
-	    if (clay .gt. 0.27) then
-	      texclass = 9 !'sicl'
-	      if (sand .gt. 0.20) texclass = 8 !'cl  '
-	      if (sand .gt. 0.45) then
-	        texclass = 7 !'scl '
-	        if (clay .gt. 0.35) texclass = 10 !'sc  '
-	      end if
-	    else
-	      if ((sand+clay) .lt. 0.50) texclass = 5 !'sil '
-	      if ((sand+clay) .lt. 0.20 .and.clay .lt. 0.12) texclass = 6 !'si  '
-	      if ((sand+clay) .ge. 0.50) texclass = 3 !'sl  '
-	      if (((sand+clay) .ge. 0.50) .and. ((sand+clay) .lt. 0.72)  
+        if (clay .gt. 0.27) then
+          texclass = 9 !'sicl'
+          if (sand .gt. 0.20) texclass = 8 !'cl  '
+          if (sand .gt. 0.45) then
+            texclass = 7 !'scl '
+            if (clay .gt. 0.35) texclass = 10 !'sc  '
+          end if
+        else
+          if ((sand+clay) .lt. 0.50) texclass = 5 !'sil '
+          if ((sand+clay) .lt. 0.20 .and.clay .lt. 0.12) texclass = 6 !'si  '
+          if ((sand+clay) .ge. 0.50) texclass = 3 !'sl  '
+          if (((sand+clay) .ge. 0.50) .and. ((sand+clay) .lt. 0.72)  
      &         .and. (clay .gt. 0.7) .and. (sand .lt. 0.52)) 
      &         texclass = 4    ! loam
-	      if (((sand+clay).ge. 0.72).and.(clay .gt. 0.20))
+          if (((sand+clay).ge. 0.72).and.(clay .gt. 0.20))
      &         texclass = 7 !scl
-	      if ((sand-clay) .gt. 0.70) texclass = 2 !'ls  '
-	      if ((sand-0.5*clay) .gt. 0.85) texclass = 1 !'s   '
-	    end if
+          if ((sand-clay) .gt. 0.70) texclass = 2 !'ls  '
+          if ((sand-0.5*clay) .gt. 0.85) texclass = 1 !'s   '
+        end if
         end if
         select case (texclass)
-	    case(1)  ! SAND
-	      texmult = 1.6
-	    case(2)  ! LOAMY SAND
-	      texmult = 1.6
-	    case(3)  ! SANDY LOAM
-	      texmult = 1.37
-	    case(4)  ! LOAM
-	      texmult = 1.37
-	    case(5)  ! SILT LOAM
-	      texmult = 1.37
-	    case(6)  ! SILT
-	      texmult = 1.37
-	    case(7)  ! S. CLAY LOAM
-	      texmult = 1.1
-	    case(8)  ! CLAY LOAM
-	      texmult = 1.1
-	    case(9)  ! SL. CLAY LOAM
-	      texmult = 1.1
-	   case(10) ! SANDY CLAY
-	      texmult = 1.0
-	   case(11) ! SILTY CLAY
-	      texmult = 1.0
-	   case(12) ! CLAY
-	      texmult = 1.0
-	   case default
-	      texmult = 1.4
+        case(1)  ! SAND
+          texmult = 1.6
+        case(2)  ! LOAMY SAND
+          texmult = 1.6
+        case(3)  ! SANDY LOAM
+          texmult = 1.37
+        case(4)  ! LOAM
+          texmult = 1.37
+        case(5)  ! SILT LOAM
+          texmult = 1.37
+        case(6)  ! SILT
+          texmult = 1.37
+        case(7)  ! S. CLAY LOAM
+          texmult = 1.1
+        case(8)  ! CLAY LOAM
+          texmult = 1.1
+        case(9)  ! SL. CLAY LOAM
+          texmult = 1.1
+       case(10) ! SANDY CLAY
+          texmult = 1.0
+       case(11) ! SILTY CLAY
+          texmult = 1.0
+       case(12) ! CLAY
+          texmult = 1.0
+       case default
+          texmult = 1.4
         end select
 
         seglen = slplen(i)

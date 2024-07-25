@@ -122,6 +122,9 @@ c     + + + END SPECIFICATIONS + + +
 c
 c
 c      *** L0 IF ***
+      hold = 0
+      drop = 0
+      adhere = 0
 c      LIVE MATERIAL EXISTS, and this is the herbicide application date.
       if ((tlive(plant).gt.0.0).and.(sdate.eq.ihdate(iplane))) then
 c

@@ -44,12 +44,12 @@ c      read: bdcons, bulk density
 c
 c     +++LOCAL VARIABLES+++
 c
-      integer  layerN,flyerN,tpbtfg,lyabwk,flabwk,varfg,
-     1         fgfzft,wklyn,wkflyn,i,j,fgwhld,abwkly,abwkfl,
+      integer  layerN,flyerN,lyabwk,flabwk,varfg,
+     1         wklyn,wkflyn,i,j,fgwhld,abwkly,abwkfl,
      1         jstart,jend
-      real     htreq,ceh2o,lhfh2o,decr,mlteng,mltime,flmlt,
-     1         frzdp,ofrzdp,eratio,mdufdp,kres,kufzfl,oslfsd
-      real     smoist,sdepth,vardp,varsm,varthk,varsmc,vartmp,
+      real     htreq,lhfh2o,decr,mlteng,mltime,flmlt,
+     1         frzdp,eratio,kres,kufzfl,oslfsd
+      real     vardp,varsm,varthk,vartmp,
      1         frzwat,spcav,varwat,varthd,tmpvr2,tmpvr1,
      1         flthck,flabtk
 c

@@ -195,12 +195,12 @@ c
 c           .......... Calculate shear conditions in segment, then
 c           Find where shear equals critical shear for segment.
             call xcrit(ainf(k),binf(k),cinf(k),tauc,xu(k,iplane),
-     1          xl(k,iplane),qostar,xc1,xc2,mshear)
+     1          xl(k,iplane),xc1,xc2,mshear)
 c
 c         For a Case 4 plane segment on which the flow ends
           else
             call xcrit(ainf(k),binf(k),cinf(k),tauc,xu(k,iplane),-
-     1          qostar,qostar,xc1,xc2,mshear)
+     1          qostar,xc1,xc2,mshear)
           end if
 c
 c         ... determine if there is deposition at the beginning of the

@@ -164,6 +164,9 @@ CAS
       integer numresrtm,cntrtm
       real rmogt2, rmogt3, cf2, cf3, rtm2, rtm3
       save cntrtm
+      
+      nowres = 0
+      aghyield = 0.
 c     Determine number of residue groups currently being tracked
 c
       if (iresd(3,iplane).ne.0) then

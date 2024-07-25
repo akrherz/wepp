@@ -701,8 +701,7 @@ c
                 x3 = 5
                 x4 = 15
                 call scurv(x1,x2,x3,x4,x5,x6)
-                call grow(nowcrp,iplane,x5,x6,ncount(iplane),
-     1              idecom(iplane))
+                call grow(nowcrp,iplane,x5,x6,ncount(iplane))
 c
 c             *** O3 ENDIF ***
               end if
