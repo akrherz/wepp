@@ -1,4 +1,4 @@
-      subroutine enrcmp(flag,ielmt,nelmt,tgs,elem)
+      subroutine enrcmp(flag,ielmt,nelmt,elem)
 c
 c     + + + PURPOSE + + +
 c
@@ -24,7 +24,7 @@ c
 c
 c     + + + ARGUMENT DECLARATIONS + + +
 c
-      real tgs(mxelem)
+c      real tgs(mxelem)
       integer flag, ielmt, nelmt, elem
 c
 c     + + + ARGUMENT DEFINITIONS + + +

@@ -123,10 +123,13 @@ c
 c     + + + END SPECIFICATIONS + + +
 c
 c
+      dettry = 0.0
       ldrat = 0.0
       ldrat2 = 0.0
       ndep = 0
       ibeg = ilast + 1
+      tclast = 0.0
+      kflag = 0
 c
 c     Verify that the beginning point has not exceeded the end of
 c     the slope segment.

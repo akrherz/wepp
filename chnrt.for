@@ -1,4 +1,4 @@
-      subroutine chnrt(nptsc,sdate,ichplt,latvol,year)
+      subroutine chnrt(nptsc,sdate,ichplt,latvol)
 c
 c     + + + PURPOSE + + +
 c
@@ -29,7 +29,7 @@ c
 c
 c     + + + ARGUMENT DECLARATIONS + + +
 c
-      integer nptsc, sdate, ichplt, year
+      integer nptsc, sdate, ichplt
       real latvol
 c
 c     + + + ARGUMENT DEFINITIONS + + +
@@ -165,6 +165,7 @@ c     the effective channel length (m --> ft)
 c
 c     chnlef is the effective channel length (m)
 c     chnlen(ichan) is the actual channel length (m)
+
 c
       topl = (chnlef-chnlen(ichan)) * 3.281
 c
@@ -592,8 +593,9 @@ c           lower end of previous segment is greater than flow width at
 c           the upper end of current segment, then make bottom of
 c           rectangular channel (widb) equal to "eroded" bottom (werb)
 c
-            if (flagc.eq.2.and.werb(ichan,i-1).gt.wfu) widb(ichan,i-1) =
-     1          werb(ichan,i-1)
+            if (flagc.eq.2.and.werb(ichan,i-1).gt.wfu) then 
+                widb(ichan,i-1) = werb(ichan,i-1)
+            end if
 c
 c           compute total detachment capacity (du)
 c
@@ -698,8 +700,8 @@ c
         dtot = 0.0
 c
         do 140 k = 1, npart
-          gtot = gtot + gstl(k) * rundur(ielmt)
-          net = (gstl(k)-gstu(k)) * rundur(ielmt) / dx
+          gtot = gtot + (gstl(k) * rundur(ielmt))
+          net = ((gstl(k)-gstu(k)) * rundur(ielmt)) / dx
           stot = stot + net
           detflo = (((gstl(k)-gstu(k))/dx)-dlat(k)) * rundur(ielmt)
           dtot = dtot + detflo
@@ -722,6 +724,7 @@ c
 c
 c       sum soil loss and deposition totals for channel
 c
+        
         if (dtot.gt.0.0) then
           cdetm(ielmt) = cdetm(ielmt) + dtot * dx
           cdety(ielmt) = cdety(ielmt) + dtot * dx

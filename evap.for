@@ -1,4 +1,4 @@
-      subroutine evap(elevm,nowcrp)
+      subroutine evap(elevm)
 c
 c     + + + PURPOSE + + +
 c     Calculate the evaporation from bare soil.  First, compute the
@@ -78,7 +78,6 @@ c     + + + KEYWORDS + + +
 c
 c     + + + ARGUMENT DECLARATIONS + + +
       real elevm
-      integer nowcrp
 c
 c     + + + ARGUMENT DEFINITIONS + + +
 c     elevm - elevation of the climate station in meters
@@ -261,7 +260,7 @@ c       print*,'Priestley-Taylor'
 c
 cd    Added by S. Dun to test Prestley-Taylor
 cd    write(60, 1600) year, mon, day, iplane, eo*1000
-1600   format (1x, 4I6, E12.3)
+c 1600   format (1x, 4I6, E12.3)
 c     calculate PENMAN and PENMAN-MONTIETH common portions
       else
         ra = radly / 23.9
@@ -385,7 +384,7 @@ c DFM end
 
 
 cd    write(60, 1500) year, mon, day, iplane, eo*1000
-1500  format(1x, 4I6, f8.2)
+c 1500  format(1x, 4I6, f8.2)
 c
 c     ** L0 ELSE-IF **
 c     PENMAN-MONTEITH EQUATION
@@ -564,7 +563,7 @@ c
 cd    Added by S. Dun, June 16, 2007 for debug
 c     Write(61, 1505) sdate, year, iplane, resint(iplane),
 c     1           plaint(iplane), pintlv(iplane)
-1505  format(3I6, 3E12.3)
+c 1505  format(3I6, 3E12.3)
 cd    End adding
 c
 CAS
@@ -662,8 +661,8 @@ cd      end if
 c
    60 continue
 c
- 1000    format(1x,i5,4f15.6)
- 2000    format(1x,i5,6f12.3)
+c 1000    format(1x,i5,4f15.6)
+c 2000    format(1x,i5,6f12.3)
 c
       return
       end

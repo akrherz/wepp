@@ -268,8 +268,7 @@ c
 c
    50       continue
 c
-            if (ielmt.eq.nelmt) call enrcmp(2,ielmt,nelmt,tgs,
-     1          elmt(ielmt))
+            if (ielmt.eq.nelmt) call enrcmp(2,ielmt,nelmt,elmt(ielmt))
 c
           else
 c

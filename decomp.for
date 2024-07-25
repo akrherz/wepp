@@ -326,8 +326,8 @@ c     + + + LOCAL VARIABLES + + +
      1    tmpvr1, tmpvr2, tmpvr3, tmpvr4, tmpvr5, wght1,
      1    env, rmagy, envinx,sumwat
 CAS
-      real buried
-      integer tillflg
+c      real buried
+c      integer tillflg
       real rmogt2, rmogt3, cf2, cf3, tmpvr6, tmpvr7
       integer numresrtm
 CAS

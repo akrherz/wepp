@@ -1,4 +1,4 @@
-      subroutine chnero(ichplt,sdate,nptsc,toplen,year)
+      subroutine chnero(ichplt,sdate,nptsc,toplen)
 c
 c     + + + PURPOSE + + +
 c
@@ -30,7 +30,7 @@ c
 c     + + + ARGUMENT DECLARATIONS + + +
 c
       real toplen
-      integer ichplt, sdate, nptsc, year
+      integer ichplt, sdate, nptsc
 c
 c     + + + ARGUMENT DEFINITIONS + + +
 c
@@ -133,12 +133,12 @@ c     if (flgout(ichan).ge.5) call chnvar(ichan,chnlen(ichan))
 c
 c     compute channel hydraulics and erosion
 c
-      call chnrt(nptsc,sdate,ichplt,latvol,year)
+      call chnrt(nptsc,sdate,ichplt,latvol)
 c
 c     write event output
 c
       call strout(elmt(ielmt),flgout(ichan),npart,wsarea(ielmt),ielmt,
-     1    ichan,sdate,nelmt)
+     1    ichan,nelmt)
 c
       return
       end

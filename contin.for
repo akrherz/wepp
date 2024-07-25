@@ -408,6 +408,8 @@ c      cntflg = 0
       mondet = 0.0
       mondep = 0.0
       runom  = 0.0
+      hyrad = 0.0
+      hfric = 0.0
 c
       do 5 j=1,12
         tora(j)   = 0.0
@@ -916,7 +918,7 @@ c
 
               if ((snodpy(iplane).gt.0.0).or.(tmin.le.0.0).or.
      1            (frdp(iplane).gt.0.0)) then
-                 call winter(rain(iplane),snoflg)
+                 call winter(snoflg)
 
 c               Following code change from David Hall - dcf 3/7/2000
 c               if (rain(iplane).gt.0.0)
@@ -952,7 +954,7 @@ c
               endif
 cd    Added by S. Dun, 11/06/2007 for checking the effective hydraulic condictivity
 cd    write(60, 1550) year,mon,day,iplane,ks(iplane),dpress(iplane)
-1550  format(1x, 4I6, E12.3, F6.3)
+c 1550  format(1x, 4I6, E12.3, F6.3)
 cd    End adding
 c
   180       continue
@@ -1137,23 +1139,23 @@ c
                      call watbal(lunp,luns,lunw,nowcrp(iplane),elev)
               endif
 c              
-cd	added by S. Dun, Nov 16, 2006
-c	For Erin Brooks to seek the total deep percolation from hilslope
+cd    added by S. Dun, Nov 16, 2006
+c    For Erin Brooks to seek the total deep percolation from hilslope
              if (ui_run.eq.1) then
               if((sdate.eq.1) .and. (i.eq.1)) then
                   ui_areaht = ui_areaht + fwidth(iplane)*slplen(iplane)
-	        endif
-			  ui_epht(i,sdate) = ui_epht(i,sdate)
+            endif
+              ui_epht(i,sdate) = ui_epht(i,sdate)
      1             + ep(iplane)*fwidth(iplane)*slplen(iplane)
-	        ui_esht(i,sdate) = ui_esht(i,sdate)
+            ui_esht(i,sdate) = ui_esht(i,sdate)
      1             + es(iplane)*fwidth(iplane)*slplen(iplane)
-	        ui_sepht(i,sdate) = ui_sepht(i,sdate)
-     1             + sep(iplane)*fwidth(iplane)*slplen(iplane)	
-             endif 		
-cd	End adding
+            ui_sepht(i,sdate) = ui_sepht(i,sdate)
+     1             + sep(iplane)*fwidth(iplane)*slplen(iplane)    
+             endif         
+cd    End adding
 c Added by L. Wang, 06/22/2011
               gwstr(ihill) = gwstr(ihill) + sep(iplane)
-c	        write(*,*)'st=', ihill, iplane, sep(iplane), gwstr(ihill)
+c            write(*,*)'st=', ihill, iplane, sep(iplane), gwstr(ihill)
 c End adding.
 c
               if (lanuse(iplane).eq.1) then
@@ -1397,8 +1399,8 @@ c
             end if
             
 c jrf accumulate SCI subfactors for NRCS
-	    call sciomeradd()
-c jrf	    
+        call sciomeradd()
+c jrf        
             if (lun1.gt.1) then
               do 240 iplane = 1, nplane
                 bigflg = 0
@@ -1537,13 +1539,13 @@ c
         if (yldflg.eq.1) write (46,*) '  '
 c
 c
-cd	Added by S. Dun, Nov 13, 2007 output for Erin Brooks of yearly distance and sediment loss
+cd    Added by S. Dun, Nov 13, 2007 output for Erin Brooks of yearly distance and sediment loss
         if (ui_run.eq.1) then
-		 call writeYearlyLossByPoint(i)
+         call writeYearlyLossByPoint(i)
 c         call sumfrc(enrff1,enrff2,enravg,frcff1,frcff2,frcavg,dsyear,
 c     1    ioutfl,ioutfl,iyear,lun1,noout,nowcrp(nplane))
         endif
-cd	End adding 
+cd    End adding 
   280 continue
 c
       if(isum.eq.1)then
@@ -1723,7 +1725,7 @@ c
         call strip (scefil,inifil)
 c
         write(47,2900)inifil
-        if(inifil.eq.'        ')inifil=crpnam(j)
+c        if(inifil.eq.'        ')inifil=crpnam(j)
 c
         write(47,2950) (mancom(i),i=1,3)
         write (47,2300) lanuse(1)

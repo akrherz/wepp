@@ -144,6 +144,7 @@ c
       timpot = 0.0
 c     adjsh = 1.35 * effsh
       adjsh = effsh
+      di = 0.0
 c
       if (adjsh.gt.crsh) go to 30
 c
@@ -209,8 +210,10 @@ c
       timex = timsh - timpot
       ab = (q*nbarch/(1.49*sqrt(sf)))
 c
-      if (werod.eq.0.0) call hydchn(4,q,sf,c1,z,wflow,werod,n,crsh,
+      if (werod.eq.0.0) then
+          call hydchn(4,q,sf,c1,z,wflow,werod,n,crsh,
      1    covsh,effsh)
+      end if
       hxb = ab / (werod**(8.0/3.0))
       ifrus = 4
       itrat = 27

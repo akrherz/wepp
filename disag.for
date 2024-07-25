@@ -111,6 +111,7 @@ c
 c
 c     initialize variables
 c
+      wmtp = 0.0
       ninten(iplane) = 11
       deltfq = 1.0 / float(ninten(iplane)-1)
       fq = 0.0

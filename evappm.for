@@ -97,7 +97,7 @@ c     + + + LOCAL VARIABLES + + +
      1    ra, ralb1, rbo, rhd, rn, rso, xl,
      1    emaxt,emint,kcbadj,TEW,REW,wfevp,
      1    etke,etkr,etks,TAW,RAW,wftrp,etorc,etcsc,rawpaj,
-     1    epdp,tpdp,etcadj,kcmax,eaj,kecon,potes,bpotes,
+     1    epdp,tpdp,kcmax,eaj,kecon,potes,bpotes,
      1    et(mxplan)
      
       integer xitflg,crpindx,i
@@ -442,7 +442,7 @@ c     write (60,1000) sdate,et(iplane),es(iplane),ep(iplane),
 c     1                eo, kcb(crpindx),rawp(crpindx)
 cd    write(60,2000) sdate,rn,cancov(iplane),rescov(iplane),
 cd    1        sumgdd(iplane),gddmax(crpindx),lai(iplane)    
-1000    format(1x,i5,6f15.6)
+c 1000    format(1x,i5,6f15.6)
 c2000    format(1x,i5,6f12.3)
       return
       end

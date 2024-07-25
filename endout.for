@@ -62,6 +62,7 @@ c
 c
       mxevnt = 0
       mxmelt = 0
+      pctirg = 0.0
 c
       do 10 jkl = 1, nplane
         if (nrunot(jkl).gt.mxevnt) mxevnt = nrunot(jkl)
