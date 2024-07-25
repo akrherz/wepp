@@ -12,7 +12,7 @@ FFLAGS_IFORT    = -c -autodouble -O1 -traceback -align dcommons -diag-disable 82
 
 FFLAGS_G95    = -c -Wall -malign-double -O3 -march=pentium4 
 FFLAGS_G95    = -c -Wall -malign-double -r8 -O3 -i4 
-FFLAGS_GNU     = -c -fdefault-real-8 -Wall -malign-double -O2 
+FFLAGS_GNU     = -c -fdefault-real-8 -Wall -malign-double -O2 -fimplicit-none -Wno-align-commons -Wsurprising -Wextra -Wcompare-reals
 FFLAGS_2 = -c -r
 LINK_IF    = ifort 
 LINK_G95    = g++
