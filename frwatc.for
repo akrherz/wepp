@@ -60,9 +60,9 @@ c
 c
 c     +++LOCAL VARIABLES+++
 c
-      integer  frstn,i,j,fglckw,jend
+      integer  i,j,fglckw,jend
       real     slufdp,sumfzd,sumsw,sumice,sumst,varchg,
-     1         varufd,varsw,varwat,vardp,varufp,
+     1         varsw,varwat,vardp,varufp,
      1         lackw,varswc,wlck,vartmp,nwinc,spcav
 c
 c     +++LOCAL DEFINITIONS+++

@@ -204,6 +204,9 @@ c     Initialize/reinititialize variables
 c
       noirr = 0
       irofe = 0
+      totlen = 0.0
+      minks = 0.0
+      k = 0
       do 10  iplane = 1, nplane
         irdept(iplane) = 0.0
         irint(iplane) = 0.0

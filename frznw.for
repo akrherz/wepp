@@ -52,8 +52,7 @@ c
 c
 c     +++LOCAL VARIABLES+++
 c
-      integer  i,j
-      real     htreq,ceh2o,lhfh2o,qoutnw,frzwat,vardp,vardm,spcav,pfrzw,
+      real     htreq,lhfh2o,qoutnw,frzwat,vardp,vardm,spcav,pfrzw,
      1         varthk
 c
 c     +++LOCAL DEFINITIONS+++
@@ -71,7 +70,7 @@ c     varsmc - variable for maximum water flow rate an adjecent layer can supply
 c
 c     +++DATA INITIALIZATIONS+++
 c     Phase change expention coefficient, water to ice
-      data   ceh2o/1.1/
+c      data   ceh2o/1.1/
 c     Latent heat of fusion of ice in J/m3
       data   lhfh2o/3.35e08/
 

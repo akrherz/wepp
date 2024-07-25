@@ -1,4 +1,4 @@
-      subroutine grow(nowcrp,iplane,x5,x6,ncount,idecom)
+      subroutine grow(nowcrp,iplane,x5,x6,ncount)
 c
 c     + + + PURPOSE + + +
 c     Simulates plant growth processes that are common to all
@@ -156,7 +156,7 @@ c     + + + PARAMETERS + + +
       include 'pntype.inc'
 c
 c     + + + ARGUMENT DECLARATIONS + + +
-      integer nowcrp, iplane, ncount, idecom
+      integer nowcrp, iplane, ncount
       real x5, x6
 c
 c
@@ -516,7 +516,7 @@ c##################################################################
           else
 c not considering CO2 change
             ddm = 0.0001*be(itype(nowcrp,iplane))*par
-	    endif
+        endif
 c DFM end
 c
 c         Update total above ground dry weight (vdmt) and total live
@@ -705,7 +705,7 @@ c
               if(rtd(iplane).lt.rtdmin)rtd(iplane) = rtdmin
 c
               else
-			  rtdmin = 0.15 !CAS Set the minimum rooting depth for trees in meters
+              rtdmin = 0.15 !CAS Set the minimum rooting depth for trees in meters
               rtd(iplane) = (rdmax(itype(nowcrp,iplane))
      1            /hmax(itype(nowcrp,iplane)))*canhgt(iplane)
               if(rtd(iplane).lt.rtdmin)rtd(iplane) = rtdmin
@@ -1090,7 +1090,7 @@ c
 c     *** L0 ENDIF ***
       end if
 CAS
-999   continue
+c 999      continue
 CAS
 c
       return

@@ -101,10 +101,11 @@ c
 c
 c     + + + END SPECIFICATIONS + + +
 c
-	  usr_partsize = 0
+      fexist = 0
+      usr_partsize = 0
       open (unit=9,file='partsize.dat',status='old',err=301)
-	  usr_partsize = 1
-	  goto 302
+      usr_partsize = 1
+      goto 302
  301  usr_partsize = 0
  302  continue
       iniflg = 1
@@ -268,17 +269,19 @@ c     ... if hillslope or hillslope/watershed version call SR CONTIN
 c
       if (ivers.ne.3) then
          if (ui_run.eq.1) then
-cd	Added by S. Dun, Nov 17, 2006
-c	for Erin Brooks
+cd    Added by S. Dun, Nov 17, 2006
+c    for Erin Brooks
             ui_areaht = 0.
             do 95 i = 1, 100
-	        do 95 j = 1,366	   
-	          ui_epht(i,j) = 0.
-	          ui_esht(i,j) = 0.
-	          ui_sepht(i,j) = 0.
+            do 96 j = 1,366       
+              ui_epht(i,j) = 0.
+              ui_esht(i,j) = 0.
+              ui_sepht(i,j) = 0.
+   96       continue
    95       continue
+            
          endif
-c	End adding
+c    End adding
 
         do 90 ihill = 1, nhill
 c
@@ -313,7 +316,7 @@ c
             if (fexist.eq.1) then
               ostrng = 'Enter name of existing hillslope pass file -->'
               call open(dum1,dum1,3,ostrng,filen)
-			  close(unit=dum1)
+              close(unit=dum1)
             end if
 c
             pasfil(ihill) = filen
@@ -419,7 +422,7 @@ c     dcf CLOSE - special unit 9 - to read in particle size
 c     data - for Rob Loch.
       if (usr_partsize.eq.1) then
          close(9)
-	  end if
+      end if
 c
  1000 format (a1)
  1100 format (' Do you wish to drop out of the model upon invalid',

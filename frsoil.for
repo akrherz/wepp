@@ -54,7 +54,7 @@ c
 c
 c     +++LOCAL VARIABLES+++
 c
-      integer  frstn,i,j,jend
+      integer  i,j,jend
       real     slks(10,mxnsl,mxplan),kf
       real     varsm,varwtp,varkus,vardp,tmpvr1,tmpvr2
 c

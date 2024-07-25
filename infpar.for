@@ -224,7 +224,9 @@ c
       avpor(iplane) = 0.0
       avsm15 = 0.0
       avcpm = 0.0
-      tpfzfg = 0      
+      tpfzfg = 0  
+      wetfrt = 0.0
+      tc = 0.0
 c
       do 10 i = 1, 2
 c ------ ratio of tillage layer thick. to primary (deepest) til. depth
@@ -573,7 +575,7 @@ c
 c
 c      Write(60, 1505) day, mon, year, eke, kbare, scovef,crstad
 c     1                ,crust(iplane),bbbb
-1505  format(1x, 3I6, 6E12.3)
+c 1505  format(1x, 3I6, 6E12.3)
 c
 c     Compute effective matric potential (SM), correcting for rock
 c     fragments (using AVCPM).

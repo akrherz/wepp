@@ -480,7 +480,7 @@ c
 c
    50 continue
 c
-c     initialize miscellaneous non-arry variables contained
+c     initialize miscellaneous non-array variables contained
 c     in the impoundment cim*.inc common blocks
 c
       cl50 = 0.0
@@ -500,6 +500,7 @@ c
       yc = 0.0
       qesr = 0.0
       ncross = 0
+      qesii = 0.0
 c
       do 60 i = 1, 30
         pypos(i) = 0.0

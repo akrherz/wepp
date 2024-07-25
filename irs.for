@@ -364,7 +364,7 @@ c
 cd    Added by S. Dun, June 15, 2007
 c     For checking out winter K
 cd    write(61,1500) year,mon,day,iplane,Xmxint(iplane),aveks(iplane)
-1500  format(1x, 4i6, 2E12.3)
+c 1500  format(1x, 4i6, 2E12.3)
 cd    End added
 c
           if (xmxint(iplane).gt.aveks(iplane)) then

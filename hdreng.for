@@ -6,7 +6,7 @@ c     Local variables
 c
       integer numhil, numofe, i
       real ver
-      character*45 hillnm(13), ofenm1(15), ofenm2(15), ofenm3(15),
+      character*46 hillnm(13), ofenm1(15), ofenm2(15), ofenm3(15),
      1    ofenm4(15), ofenm5(15), ofenm6(16)
 c
       data numhil /13/

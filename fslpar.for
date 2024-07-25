@@ -69,6 +69,7 @@ c     + + + END SPECIFICATIONS + + +
 c
 c
       ibeg = 1
+      ytr = 0.0
 c
 c     compute constant c3 in the normalized equation for spatially
 c     varied flow

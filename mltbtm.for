@@ -53,14 +53,14 @@ c
 c
 c     +++LOCAL VARIABLES+++
 c
-      integer  layerN,flyerN,tpbtfg,lyblwk,flblwk,varfg,
-     1         fgfzft,wklyn,wkflyn,i,j,LN1mbf,FLN1mb,fgwhld,
+      integer  layerN,flyerN,lyblwk,flblwk,varfg,
+     1         wklyn,wkflyn,i,j,LN1mbf,FLN1mb,fgwhld,
      1         jstart,jend,flycn
-      real     htreq,ceh2o,lhfh2o,decr,mlteng,mltime,flmlt,
+      real     htreq,lhfh2o,decr,mlteng,mltime,flmlt,
      1         frzdp, ofrzdp,mdufdp,qdrysd,eratio,
      1         tmpbl,tmpdp,dmping,kufzfl,oslfsd,kufz
-      real     smoist,sdepth,vardp,varsm,varthk,varsmc,
-     1         varwtp,varkus,tmpvr1,tmpvr2,vartmp,
+      real     vardp,varthk,
+     1         tmpvr1,tmpvr2,vartmp,
      1         frzwat,spcav,varwat,varthd,flthck,flbltk
 c
 c     +++LOCAL DEFINITIONS+++

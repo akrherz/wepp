@@ -53,11 +53,11 @@ c     read: bdcons, bulk density
 c
 c     +++LOCAL VARIABLES+++
 c
-      integer  layerN,flyerN,tpbtfg,lyblwk,flblwk,varfg,
-     1         fgfzft,wklyn,wkflyn,i,j,varfst,varstp
-      real     htreq,ceh2o,lhfh2o,incr,frzeng,fztime,flfzt,
-     1         frzftp,wtPkpa,wtpm, kunsat,qwater,frzdp,ofrzdp
-      real     smoist,sdepth,vardp,varsm,varthk,varsmc,vardm,
+      integer  layerN,flyerN,lyblwk,flblwk,varfg,
+     1         wklyn,wkflyn,i,j,varfst,varstp
+      real     htreq,lhfh2o,incr,frzeng,fztime,flfzt,
+     1         frzftp,wtpm, kunsat,qwater,frzdp,ofrzdp
+      real     vardp,varsm,varthk,varsmc,vardm,
      1         varwtp, varkus,mdfzdp,eratio,tmpvr1,tmpvr2,
      1         kufzfl,oslfsd, varegt,varul,nwfrzt,
      1         qouttp,pfrzw,vartemp,varfdp
@@ -110,7 +110,7 @@ c     kufzfl - Thermal conductivity of a fine layer unfrozen soil (W/m C).
 c
 c     +++DATA INITIALIZATIONS+++
 c     Phase change expention coefficient, water to ice
-      data   ceh2o/1.1/
+c      data   ceh2o/1.1/
 c     Latent heat of fusion of ice in J/m3
       data   lhfh2o/3.35e08/
 
@@ -122,6 +122,8 @@ c     Do loop
       flfzt = 0.
       incr = 0
       vardm = 0.0
+      flblwk = 0.
+      frzeng = 0.
 c
 c     When there is thawed water ponding on soil surface
       if(watpdg(iplane).gt.1e-5) then
@@ -563,7 +565,7 @@ c     End of the do loop
 c     *************************************************************
 c
 cd        write(62, 1000) sdate, hour, year, qdy, qhtout,qwet  
-1000    format(1x, 3i6, 3e12.2)
+c 1000    format(1x, 3i6, 3e12.2)
 c
       return
       end

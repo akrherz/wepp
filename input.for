@@ -169,10 +169,10 @@ CASnew
 c
 c     + + + LOCAL VARIABLES + + +
 c
-      real rint, ddg(mxnsl), bd2(mxnsl), ssc2(mxnsl), thetf2(mxnsl),
+      real ddg(mxnsl), bd2(mxnsl), ssc2(mxnsl), thetf2(mxnsl),
      1    thetd2(mxnsl), sand2(mxnsl), clay2(mxnsl), orgma2(mxnsl),
      1    cec2(mxnsl), rfg2(mxnsl), del, dep, ksinv(mxnsl), slayth,
-     1    hslope,sleng,yy(mxslp),avslp,totthk,thkadd,solbtm,
+     1    hslope,sleng,yy(mxslp),avslp,totthk,thkadd,
      1    ui_ksari(mxnsl), ui_anisrt(mxnsl)
       integer i, j, k, l, iout, ibdf(mxnsl), ithf(mxnsl), ithd(mxnsl),
      1    issc(mxnsl), iii, iiii, n , km
@@ -206,6 +206,7 @@ c
 c     + + + END SPECIFICATIONS + + +
 c
 c
+      n = 0
       if (imodel.eq.2) iout = 32
       if (imodel.ne.2) iout = 31
       if (ivers.eq.3) iout = 38
@@ -587,10 +588,10 @@ c
 
 c
 CAS            totthk=totthk+solth1(i,iplane) !! Commented by A. Srivastava 6/8/2017
-											  !! This was adding the cumulative depth of soil layers.
+                                              !! This was adding the cumulative depth of soil layers.
             if(i.eq.nslorg(iplane))then
-			   totthk=solth1(i,iplane)		  !! Moved and modified the above line here. A. Srivastava 6/8/2017
-											  !! If this is the last layer, that's the total soil thickness.
+               totthk=solth1(i,iplane)          !! Moved and modified the above line here. A. Srivastava 6/8/2017
+                                              !! If this is the last layer, that's the total soil thickness.
                if(totthk.lt.200.0)then
                 thkadd=200.0 - totthk
                 write(6,1400)totthk,iplane,i,solth1(i,iplane)
@@ -697,7 +698,7 @@ c
              endif
              ui_bdrkth(iplane) = ui_bdrkth(iplane)/1000.
              if(ui_bdrkth(iplane) .lt. 0.01) ui_bdrkth(iplane) = 0.01
-	       if(ui_bdrkth(iplane) .gt. 100.) ui_bdrkth(iplane) = 100.
+           if(ui_bdrkth(iplane) .gt. 100.) ui_bdrkth(iplane) = 100.
            end if
 c
 c       Following section added to limit initial frost and thaw

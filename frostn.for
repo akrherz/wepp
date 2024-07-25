@@ -4,7 +4,7 @@ c     +++PURPOSE+++
 c     This is the main driver for the frost subroutines.  Based
 c     on the surface, climate and soil conditions it decides
 c     which subroutines are to be called.  It considers energy
-c     flow between the frozen layers, snow depth, melting or
+c     flow between the frozen layers, snow depth, melting 
 c     freezing and also calls the infiltration capacity calculations.
 c
 c     --------------------------------------------------------------------
@@ -128,11 +128,11 @@ c
 c
 c     +++LOCAL VARIABLES+++
 c
-      integer i,j,jstart,jend,LN1mbf,FLN1mb,layerN,flyerN,tpbtfg,
+      integer i,j,jstart,jend,LN1mbf,FLN1mb,layerN,flyerN,
      1   istart,lntp,flntp
 c
       real    kufzfl,kufz,ksnow,kres,tmpbl,tmpdp,dmping,tmpvr1,tmpvr2,
-     1        dpfsfl,vardp,factor,sp,tmpvr3
+     1        dpfsfl,vardp,sp
 c ----- Saved Variables used to avoid unnecessary recalculation:
 c
 c     +++LOCAL DEFINITIONS+++
@@ -172,8 +172,8 @@ cd    Modified by S. Dun, April 19, 2007
 c     The unit of latent heat of fusion of ice needs to be in J/m3
 c     to make the unit of heat flow in W/m2
 cd      data   lhfh2o/9.3027e04/
-      real lhfh2o
-      data   lhfh2o/3.35e08/
+c      real lhfh2o
+c      data   lhfh2o/3.35e08/
 cd      End modifying
 c
 c     +++END SPECIFICATIONS+++
@@ -236,12 +236,13 @@ c       No frost
             fgthwd(iplane) = 0
 c
             do 10 i = 1, nsl(iplane)
-                 do 10 j = 1, nfine(i)
+                 do 45 j = 1, nfine(i)
                    fgfrst(j,i,iplane) = 0
                    slfsd(j,i,iplane) = 0.0
                    slsw(j,i,iplane) = soilw(i,iplane)/dg(i,iplane)
                    yst(i,iplane) = st(i,iplane)
-                   slsic(j,i,iplane) = 0.0                 
+                   slsic(j,i,iplane) = 0.0   
+45              continue
 10          continue
        elseif(fsdfg(iplane).eq. 0) then
 c       initial frost is not zero
@@ -258,7 +259,7 @@ c
                 else
                    jend = nfine(i)
                 endif
-                do 11 j = 1, jend
+                do 46 j = 1, jend
                    fgfrst(j,i,iplane) = 1
                    slfsd(j,i,iplane) = dg(i,iplane )/nfine(i)
 cd                 Modified by S. Dun, April 08, 2009 
@@ -269,6 +270,7 @@ cd     1                                /dg(i,iplane)
 cd                   slsic(j,i,iplane) = st(i,iplane)
                   slsic(j,i,iplane) = soilw(i,iplane)/nfine(i)
 cd                end modifying
+46              continue
 11          continue
 c
             if (flyern.eq.nfine(i)) then
@@ -281,12 +283,13 @@ c
 c           
             do 12 i = istart, nsl(iplane)
 c
-                do 12 j = jstart, nfine(i)
+                do 47 j = jstart, nfine(i)
                    fgfrst(j,i,iplane) = 0
                    slfsd(j,i,iplane) = 0.0
                    slsw(j,i,iplane) = soilw(i,iplane)/dg(i,iplane)
                    yst(i,iplane) = st(i,iplane)
                    slsic(j,i,iplane) = 0.0
+47              continue
 12          continue
         elseif (hour.eq.1) then
             call frwatc(1)
@@ -624,10 +627,10 @@ c
 c
 c     Added by S. Dun, June 16, 2007, for Debuging
 cd      Write(62, 1000) sdate, hour, year
-1000  Format(1x, 3I6)
+c 1000  Format(1x, 3I6)
 cd      do 35 i = 1, nsl(iplane) 
 cd      write(62,1500) (slsw(j,i,iplane),j=1,10)
-1500  format(1x, 10E12.3)
+c 1500  format(1x, 10E12.3)
 cd35    continue
 c     end adding
 c

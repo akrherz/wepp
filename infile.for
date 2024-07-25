@@ -515,7 +515,7 @@ CAS Crop yield calibration
       if(yldrun) then
           open(unit=73,file='cropyld.txt',action='write')
           close(73,status='delete')
-655   continue    
+c 655   continue    
           open(unit=73,file='cropyld.txt',status='new',action='write')
       
           do 5 i = 1, ncrop
@@ -2229,7 +2229,7 @@ c
       open(unit=21,file='wepp-co2.txt',status='old',err=701)
       co2run = .TRUE.
    
-701	if (co2run) then
+701    if (co2run) then
 c "current" co2 content is 330 ppm
         co2now = 330.
         
@@ -2238,7 +2238,7 @@ c       read co2 concentration
         read (21,*) co2
 
 c       for each plant read additional co2 parameters
-	  do i = 1, ncrop 
+      do i = 1, ncrop 
           call eatcom(21)
           read (21,*,END=703,ERR=702) vpth(i),vpda,vpdb,gsi(i),xptbe,
      1        xptco2,wavp(i)
@@ -2255,18 +2255,18 @@ c and wac22(i) for each crop. Values for biomass-energy ratio (be) under
 c "current" (beinp(i)) and "experimental"(xptbe) co2 concentrations must
 c be scaled down before calculation to prevent overflow
 705       tmpbe = beinp(i)*0.01
-	    tmpxbe = xptbe*0.01
-	    xxtemp = alog(co2now/tmpbe-co2now)
-	    wac22(i) = (xxtemp-alog(xptco2/tmpxbe-xptco2))/(xptco2-co2now)
-	    wac21(i) = xxtemp + co2now*wac22(i)
+        tmpxbe = xptbe*0.01
+        xxtemp = alog(co2now/tmpbe-co2now)
+        wac22(i) = (xxtemp-alog(xptco2/tmpxbe-xptco2))/(xptco2-co2now)
+        wac21(i) = xxtemp + co2now*wac22(i)
 
 c leaf conductance is assumed to decline linearly as vpd increases above 
 c vpth. So vpda is some value of vpd above vpth (e.g. 4.0), and vpdb is 
 c the corresponding fraction of the maximum leaf conductance at that 
 c value of vpd (e.g., 0.7)
-	    vpd2(i) = (1.0-vpdb)/(vpda-vpth(i))
-	  enddo
-	
+        vpd2(i) = (1.0-vpdb)/(vpda-vpth(i))
+      enddo
+    
         close(21)
       endif
 c DFM end 

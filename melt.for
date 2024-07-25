@@ -1,4 +1,4 @@
-      subroutine melt(irtype,wrain,hour)
+      subroutine melt(irtype,hour)
 c
 c
 c     +++PURPOSE+++
@@ -16,7 +16,7 @@ c     Modified 11/25/96 by Dennis Flanagan
 
 c
 c     +++ARGUMENT DECLARATIONS+++
-      real wrain,cancvf
+      real cancvf
       integer  hour,irtype
 c
 c     +++ARGUMENT DEFINITIONS+++
@@ -58,9 +58,8 @@ cd      End adding
 c
 c     +++LOCAL VARIABLES+++
       save
-      real     amelt1,bmelt1,cmelt1,dmelt1,m1
       real     height,rough,disp,cldpct,amelt,bmelt,cmelt,windh,
-     1         x,tmptrm,davgtf,dmelt,rainin,hrtef,adj,vwmph,hrdtf
+     1         x,davgtf,dmelt,rainin,hrtef,adj,vwmph,hrdtf
 
 c
 c     +++LOCAL DEFINITIONS+++
@@ -277,7 +276,7 @@ cd      if(wmelt(iplane).lt.0.0) wmelt(iplane) = 0.0
 
 cd      write(62, 1000) sdate, hour, year, amelt,bmelt,cmelt,dmelt,
 cd     1            cancov(iplane),hradmj,vwmph,adj
-1000  format(1x, 3i6, 8e12.2)
+c 1000  format(1x, 3i6, 8e12.2)
 c
       return
       end

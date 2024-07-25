@@ -77,6 +77,7 @@ c
 c
 c     write(6,*) q,xstar,xbeg,ibeg,ssfb,ssfe,sf
 c
+      ssf = 0.0
       ycrch = crit(z,q)
       sc = fslq(q,n,c1,ycrch)
 c
