@@ -290,7 +290,7 @@ c
    50       continue
 c
             if (ielmt.eq.nelmt.and.watsum.gt.1) call
-     1          enrcmp(2,ielmt,nelmt,tgs,elmt(ielmt))
+     1          enrcmp(2,ielmt,nelmt,elmt(ielmt))
 c
           else
 c
