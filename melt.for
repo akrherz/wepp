@@ -59,7 +59,7 @@ c
 c     +++LOCAL VARIABLES+++
       save
       real     height,rough,disp,cldpct,amelt,bmelt,cmelt,windh,
-     1         x,davgtf,dmelt,rainin,hrtef,adj,vwmph,hrdtf
+     1         x,dmelt,rainin,hrtef,adj,vwmph,hrdtf
 
 c
 c     +++LOCAL DEFINITIONS+++
@@ -75,6 +75,9 @@ c     windh  - Height at which the wind speed is measured, assume 2.0 m.
 c     dmelt  - Fourth part of WEPP 3.2.1 - represents temperature term.
 c     x      - Temporary variable.
 c     adj    - adjustment for wind height and roughness calculations
+c     hrtef  - difference in F between snowpack temperature and air Temp
+c     hrdtf  - difference in F between snowpack temperature air dew point Temp
+c     
 c     +++DATA INITIALIZATIONS+++
 c
 c    NOTE - The wind generated
@@ -121,9 +124,10 @@ c
 c
 c     Savabi correction - need to convert delta temperature
 c     from degrees C to degrees F -  dcf  11/25/96
-c
+c     This is the temperature difference between the air temp
+c     and the snowpack (assumed to be 32F). Since the normal C to F 
+c     conversion s T*(9/5)+32 the delta is (T*(9/5)+32)-32 or T*(9/5)
       hrtef=hrtemp*(9./5.)
-      davgtf=(tmax + tmin)/2*(9./5.)
 
 c -- Calculating decimal percent cloud cover --
 cd      Modified by S. Dun, Jan 12, 2007
@@ -174,7 +178,7 @@ cd      End of modifying
 c -- Aug 1989 WEPP manual. Second term of 3.2.1 for melt. --
 cd      Modified by S. Dun, June 14, 2007
 cd      bmelt =( 0.84 * (1.0 - cldpct))/24.
-c
+c       Based on Eqn 5-8 in USACE EM1110-2-1406 with mods
       bmelt = 0.025/24 * hrtef
      1       -( 0.84 * (1.0 - cldpct))*(1.0 - cancov(iplane)*cancvf)/24.
 cd      End modifying
@@ -186,7 +190,7 @@ c -- of rough being unset and defaulted to 0.0.
 c
 cd      Modified by S. Dun, Jan 17, 2008
 c      the wind adjustment factor equation seems wrong
-c      Now we use 5-22 from EM1110-2-1406 vind measurement height assumed 15.2m 
+c      Now we use 5-22 from USACE EM1110-2-1406 vind measurement height assumed 15.2m 
 c     when using unit meter the coefficent would be 1.57 = (15.2)^(1/6)
 cd      if (rough .lt. 0.0001) then
 cd        cmelt = 0.0
@@ -208,10 +212,14 @@ c
 c       Savabi correction to convert wind velocity from m/sec
 c       to miles/hour.  Assume 0.1 tx=0.22 hrtef     -  dcf  11/25/96
         vwmph=(vwind*3600)/1609.
+c     hrdtf - this is the temperature difference between the dew temp
+c     and the snowpack (assumed to be 32F). Since the normal C to F 
+c     conversion s T*(9/5)+32 the delta is (T*(9/5)+32)-32 or T*(9/5)        
         hrdtf=tdpt*(9./5.)
 c
 cd      Added by S. Dun, Jan 15, 2008
 c      for condtion when wind effect can be considered negligible
+c      Based on Eqn 5-15 and 5-16 from USACE EM1110-2-1406
         if(vwmph.gt.0) then
            cmelt = (0.0084/24.) * vwmph*(1.0-0.8*cancov(iplane)*cancvf)*
      1             ((0.22*hrtef)+(0.78*hrdtf))*adj
@@ -236,7 +244,8 @@ c
 c     Assume warm rain temperature equals dew point temperature  
 c     if the dew point temperature is greater than 0 C,
 c     otherwise eaqual the hourly air tempearture.
-c
+c     hrdtf and hrtef are difference from 32F 
+c     Eqn. 5-18 in USACE em1100-2-1406
       if (hrdtf .gt. 0.0) then
           dmelt= 0.007* rainin * hrdtf
       else
