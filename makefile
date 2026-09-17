@@ -2,19 +2,19 @@
 #
 # makefile for solaris 8 wepp executable.
 #
-FC_IF	  = ifort
+FC_IF	  = ifx
 FC_G95        = g95
 FC_GNU        = gfortran
 FC_2      = f2c
-#FFLAGS_IFORT    = -c -autodouble -O -align dcommons 
-#FFLAGS_IFORT    = -c -autodouble -O -traceback -align dcommons -diag-disable 8291
-FFLAGS_IFORT    = -c -autodouble -O1 -traceback -align dcommons -diag-disable 8291
+#FFLAGS_IFX    = -c -autodouble -O -align dcommons 
+#FFLAGS_IFX    = -c -autodouble -O -traceback -align dcommons -diag-disable 8291
+FFLAGS_IFX    = -c -autodouble -O1 -traceback -align dcommons -diag-disable 8291
 
 FFLAGS_G95    = -c -Wall -malign-double -O3 -march=pentium4 
 FFLAGS_G95    = -c -Wall -malign-double -r8 -O3 -i4 
 FFLAGS_GNU     = -c -fdefault-real-8 -Wall -malign-double -O2 -fimplicit-none -Wno-align-commons -Wsurprising -Wextra -Wcompare-reals
 FFLAGS_2 = -c -r
-LINK_IF    = ifort 
+LINK_IF    = ifx 
 LINK_G95    = g++
 LINK_GNU     = gfortran
 LINK_2    = g++
@@ -25,7 +25,7 @@ ifeq ($(FC),gfortran)
   FC = $(FC_GNU)
   LINKER = $(LINK_GNU)
 else
-  FFLAGS = $(FFLAGS_IFORT)
+  FFLAGS = $(FFLAGS_IFX)
   FC = $(FC_IF)
   LINKER = $(LINK_IF)
 endif
