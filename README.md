@@ -1,5 +1,5 @@
 # WEPP
-This is the WEPP model used by NRCS and the WEPP Windows interface. **The last released version of WEPP is in a seperate repository (wepp2012) that should not be changed.** The code is compiled using the Intel FORTRAN compiler and can be built for Windows or Linux. The makefile included will build on Unbuntu 20.04. To build a 64 bit Linux version use the makefile64 file. 
+This is the WEPP model used by NRCS and the WEPP Windows interface. **The last released version of WEPP is in a seperate repository (wepp2012) that should not be changed.** The code is compiled using the Intel FORTRAN compiler and can be built for Windows or Linux. The makefile included will build on Unbuntu. To build a 64 bit Linux version use `make -f makefile64`.
 
 When building the model for use in watershed application copy the files from the subdirectory **watershed-large-arrays** overwriting the default include files. These files define larger array sizes internal to WEPP.
 
@@ -16,7 +16,7 @@ FFLAGS = $(FFLAGS_GNU)
 FC = $(FC_GNU)
 LINKER = $(LINK_GNU)
 
-#FFLAGS = $(FFLAGS_IFORT)
+#FFLAGS = $(FFLAGS_IFX)
 #FC = $(FC_IF)
 #LINKER = $(LINK_IF)
 
